@@ -1,9 +1,15 @@
 import { getTranslations } from 'next-intl/server';
 import { setRequestLocale } from 'next-intl/server';
+import { locales } from '@/lib/i18n';
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
 }
+
+// Generate static params for all locales
+export const generateStaticParams = () => {
+  return locales.map((locale) => ({ locale }));
+};
 
 const HomePage = async ({ params }: HomePageProps) => {
   const { locale } = await params;

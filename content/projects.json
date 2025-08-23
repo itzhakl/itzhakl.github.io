@@ -1,0 +1,132 @@
+[
+  {
+    "slug": "ai-fitness-coach",
+    "title": {
+      "en": "AI Fitness Coach",
+      "he": "מאמן כושר AI"
+    },
+    "summary": {
+      "en": "A comprehensive AI-powered fitness coaching system built with Next.js, Node.js, and Python. Features personalized workout plans, nutrition tracking, and real-time form analysis using computer vision.",
+      "he": "מערכת מאמן כושר מקיפה המופעלת על ידי AI שנבנתה עם Next.js, Node.js ו-Python. כוללת תוכניות אימון מותאמות אישית, מעקב תזונה וניתוח תנוחה בזמן אמת באמצעות ראייה ממוחשבת."
+    },
+    "tech": [
+      "Next.js",
+      "Node.js",
+      "Python",
+      "OpenAI API",
+      "Computer Vision",
+      "PostgreSQL",
+      "TensorFlow"
+    ],
+    "links": {
+      "github": "https://github.com/itzhakl/ai-fitness-coach"
+    },
+    "image": "/assets/projects/ai-fitness-coach.jpg",
+    "featured": true,
+    "role": {
+      "en": "Full-Stack Developer & AI Integration Specialist",
+      "he": "מפתח Full-Stack ומומחה אינטגרציית AI"
+    },
+    "impact": {
+      "en": "Managed complete product lifecycle from concept to deployment, implementing AI-driven personalization that increased user engagement by 40%",
+      "he": "ניהלתי מחזור חיים מלא של המוצר מהרעיון ועד לפריסה, יישמתי התאמה אישית מונעת AI שהגדילה את מעורבות המשתמשים ב-40%"
+    }
+  },
+  {
+    "slug": "anonymous-chat-bot",
+    "title": {
+      "en": "Anonymous Chat Bot",
+      "he": "בוט צ'אט אנונימי"
+    },
+    "summary": {
+      "en": "A secure anonymous chat bot built with Node.js and Telegram API, featuring end-to-end encryption, automated moderation, and advanced security protocols for safe communication.",
+      "he": "בוט צ'אט אנונימי מאובטח שנבנה עם Node.js ו-Telegram API, כולל הצפנה מקצה לקצה, מודרציה אוטומטית ופרוטוקולי אבטחה מתקדמים לתקשורת בטוחה."
+    },
+    "tech": [
+      "Node.js",
+      "Telegram Bot API",
+      "Redis",
+      "MongoDB",
+      "Encryption",
+      "Docker"
+    ],
+    "links": {
+      "github": "https://github.com/itzhakl/anonymous-chat-bot"
+    },
+    "image": "/assets/projects/anonymous-chat-bot.jpg",
+    "featured": true,
+    "role": {
+      "en": "Backend Developer & Security Architect",
+      "he": "מפתח Backend ואדריכל אבטחה"
+    },
+    "impact": {
+      "en": "Implemented robust automation and security features, serving 1000+ daily active users with 99.9% uptime",
+      "he": "יישמתי תכונות אוטומציה ואבטחה חזקות, משרת 1000+ משתמשים פעילים יומיים עם זמינות של 99.9%"
+    }
+  },
+  {
+    "slug": "interactive-gis-tools",
+    "title": {
+      "en": "Interactive GIS Tools",
+      "he": "כלי GIS אינטראקטיביים"
+    },
+    "summary": {
+      "en": "Advanced GIS mapping tools developed for military systems using JavaScript, React, GeoJSON, and OpenLayers. Features real-time data visualization, spatial analysis, and mission planning capabilities.",
+      "he": "כלי מיפוי GIS מתקדמים שפותחו עבור מערכות צבאיות באמצעות JavaScript, React, GeoJSON ו-OpenLayers. כוללים הדמיית נתונים בזמן אמת, ניתוח מרחבי ויכולות תכנון משימות."
+    },
+    "tech": [
+      "JavaScript",
+      "React",
+      "GeoJSON",
+      "OpenLayers",
+      "Cesium",
+      "PostGIS",
+      "WebGL"
+    ],
+    "links": {},
+    "image": "/assets/projects/gis-tools.jpg",
+    "featured": true,
+    "isInternal": true,
+    "role": {
+      "en": "GIS Developer & Technical Lead",
+      "he": "מפתח GIS ומוביל טכני"
+    },
+    "impact": {
+      "en": "Led development of critical mapping infrastructure used by multiple operational units, improving mission planning efficiency by 60%",
+      "he": "הובלתי פיתוח של תשתית מיפוי קריטית המשמשת מספר יחידות מבצעיות, שיפרתי את יעילות תכנון המשימות ב-60%"
+    }
+  },
+  {
+    "slug": "modern-portfolio",
+    "title": {
+      "en": "Modern Portfolio Website",
+      "he": "אתר תיק עבודות מודרני"
+    },
+    "summary": {
+      "en": "A responsive, dark-mode portfolio built with Next.js 15, featuring smooth animations, bilingual support (English/Hebrew), and optimized performance. Showcases modern web development practices.",
+      "he": "תיק עבודות רספונסיבי במצב כהה שנבנה עם Next.js 15, כולל אנימציות חלקות, תמיכה דו-לשונית (אנגלית/עברית) וביצועים מותאמים. מציג שיטות פיתוח אינטרנט מודרניות."
+    },
+    "tech": [
+      "Next.js",
+      "TypeScript",
+      "TailwindCSS",
+      "Framer Motion",
+      "next-intl",
+      "Zod"
+    ],
+    "links": {
+      "github": "https://github.com/itzhakl/portfolio",
+      "live": "https://itzhak-leshinsky.vercel.app"
+    },
+    "image": "/assets/projects/modern-portfolio.jpg",
+    "featured": false,
+    "role": {
+      "en": "Full-Stack Developer & UI/UX Designer",
+      "he": "מפתח Full-Stack ומעצב UI/UX"
+    },
+    "impact": {
+      "en": "Achieved 95+ Lighthouse performance score with full accessibility compliance and RTL language support",
+      "he": "השגתי ציון ביצועים של 95+ ב-Lighthouse עם תאימות נגישות מלאה ותמיכה בשפות RTL"
+    }
+  }
+]

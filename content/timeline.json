@@ -1,0 +1,107 @@
+[
+  {
+    "year": "2021-2022",
+    "title": {
+      "en": "Branch Manager at Star Car Rental",
+      "he": "מנהל סניף ב-Star Car Rental"
+    },
+    "summary": {
+      "en": "Managed daily operations of a car rental branch in Jerusalem, overseeing customer service, fleet management, and team coordination. Developed leadership and business management skills.",
+      "he": "ניהלתי פעילות יומיומית של סניף השכרת רכב בירושלים, פיקחתי על שירות לקוחות, ניהול צי וקואורדינציה של צוות. פיתחתי כישורי מנהיגות וניהול עסקי."
+    },
+    "tags": ["Management", "Customer Service", "Team Leadership", "Operations"],
+    "category": "civilian",
+    "location": {
+      "en": "Jerusalem",
+      "he": "ירושלים"
+    }
+  },
+  {
+    "year": "2022",
+    "title": {
+      "en": "Software Testing Course at INT College",
+      "he": "קורס בדיקות תוכנה במכללת INT"
+    },
+    "summary": {
+      "en": "Completed comprehensive software testing course covering manual and automated testing methodologies, test planning, and quality assurance practices. Foundation for technical career transition.",
+      "he": "השלמתי קורס מקיף בבדיקות תוכנה הכולל מתודולוגיות בדיקה ידניות ואוטומטיות, תכנון בדיקות ושיטות הבטחת איכות. בסיס למעבר לקריירה טכנית."
+    },
+    "tags": ["Software Testing", "QA", "Automation", "Technical Training"],
+    "category": "education"
+  },
+  {
+    "year": "2023",
+    "title": {
+      "en": "Full-Stack Developer in IDF J6 & Cyber Defense",
+      "he": "מפתח Full-Stack ביחידת J6 והגנת סייבר צה\"ל"
+    },
+    "summary": {
+      "en": "Served as Full-Stack Developer in IDF technology units, developing GIS tools, microservices, and reusable libraries. Led teams, mentored junior developers, and managed Jira/Confluence workflows.",
+      "he": "שירתתי כמפתח Full-Stack ביחידות טכנולוגיה של צה\"ל, פיתחתי כלי GIS, מיקרו-שירותים וספריות לשימוש חוזר. הובלתי צוותים, הדרכתי מפתחים זוטרים וניהלתי זרימות עבודה ב-Jira/Confluence."
+    },
+    "tags": [
+      "Full-Stack Development",
+      "GIS",
+      "Team Leadership",
+      "Microservices",
+      "Mentoring"
+    ],
+    "category": "idf"
+  },
+  {
+    "year": "2023",
+    "title": {
+      "en": "Full-Stack & DevOps Courses",
+      "he": "קורסי Full-Stack ו-DevOps"
+    },
+    "summary": {
+      "en": "Completed advanced Full-Stack development and DevOps courses at Webiks and Develeap, mastering modern web technologies, CI/CD pipelines, and cloud deployment strategies.",
+      "he": "השלמתי קורסי פיתוח Full-Stack ו-DevOps מתקדמים ב-Webiks ו-Develeap, שלטתי בטכנולוגיות אינטרנט מודרניות, צינורות CI/CD ואסטרטגיות פריסה בענן."
+    },
+    "tags": [
+      "Full-Stack",
+      "DevOps",
+      "CI/CD",
+      "Cloud",
+      "Professional Development"
+    ],
+    "category": "education"
+  },
+  {
+    "year": "2024",
+    "title": {
+      "en": "Freelance Full-Stack Developer",
+      "he": "מפתח Full-Stack עצמאי"
+    },
+    "summary": {
+      "en": "Started freelance career developing AI-powered bots, web systems, and automation tools. Built AI Fitness Coach and Anonymous Chat Bot, serving hundreds of users with modern tech stacks.",
+      "he": "התחלתי קריירה עצמאית בפיתוח בוטים מונעי AI, מערכות אינטרנט וכלי אוטומציה. בניתי AI Fitness Coach ו-Anonymous Chat Bot, משרת מאות משתמשים עם טכנולוגיות מודרניות."
+    },
+    "tags": [
+      "Freelance",
+      "AI Development",
+      "Bot Development",
+      "Automation",
+      "Entrepreneurship"
+    ],
+    "category": "civilian"
+  },
+  {
+    "year": "2024",
+    "title": {
+      "en": "B.Sc. Computer Science at Open University",
+      "he": "תואר ראשון במדעי המחשב באוניברסיטה הפתוחה"
+    },
+    "summary": {
+      "en": "Currently pursuing Bachelor's degree in Computer Science at the Open University, focusing on algorithms, data structures, software engineering, and advanced programming concepts.",
+      "he": "כעת לומד לתואר ראשון במדעי המחשב באוניברסיטה הפתוחה, מתמקד באלגוריתמים, מבני נתונים, הנדסת תוכנה ומושגי תכנות מתקדמים."
+    },
+    "tags": [
+      "Computer Science",
+      "Algorithms",
+      "Software Engineering",
+      "Academic Studies"
+    ],
+    "category": "education"
+  }
+]

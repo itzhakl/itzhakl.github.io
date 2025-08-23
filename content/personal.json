@@ -1,0 +1,54 @@
+{
+  "funFacts": {
+    "en": [
+      "I enjoy running and sports to clear my mind and stay energized",
+      "Music is my passion - I love playing instruments and discovering new sounds",
+      "I find coding at night with good music to be incredibly productive",
+      "I'm always excited to learn new technologies and experiment with AI tools",
+      "I believe the best solutions come from understanding both the technical and human sides"
+    ],
+    "he": [
+      "אני נהנה לרוץ ולעסוק בספורט כדי לנקות את הראש ולהישאר אנרגטי",
+      "מוזיקה היא התשוקה שלי - אני אוהב לנגן בכלים ולגלות צלילים חדשים",
+      "אני מוצא שקידה בלילה עם מוזיקה טובה להיות מאוד פרודוקטיבית",
+      "אני תמיד נרגש ללמוד טכנולוגיות חדשות ולהתנסות עם כלי AI",
+      "אני מאמין שהפתרונות הטובים ביותר מגיעים מהבנה של הצד הטכני והאנושי כאחד"
+    ]
+  },
+  "interests": {
+    "en": [
+      "Running and outdoor sports for mental clarity",
+      "Playing musical instruments and music production",
+      "Exploring AI and machine learning applications",
+      "Building automation tools that solve real problems",
+      "Reading about technology trends and innovations",
+      "Traveling and experiencing different cultures"
+    ],
+    "he": [
+      "ריצה וספורט חוץ לבהירות מנטלית",
+      "נגינה בכלי נגינה והפקת מוזיקה",
+      "חקירת יישומי AI ולמידת מכונה",
+      "בניית כלי אוטומציה שפותרים בעיות אמיתיות",
+      "קריאה על מגמות טכנולוגיות וחידושים",
+      "נסיעות וחוויית תרבויות שונות"
+    ]
+  },
+  "values": {
+    "en": [
+      "Personal growth and continuous learning",
+      "Spirituality and mindfulness in daily life",
+      "Building meaningful human connections",
+      "Creating technology that serves people",
+      "Honesty and transparency in all relationships",
+      "Balance between work, family, and personal well-being"
+    ],
+    "he": [
+      "צמיחה אישית ולמידה מתמשכת",
+      "רוחניות ומיינדפולנס בחיי היומיום",
+      "בניית קשרים אנושיים משמעותיים",
+      "יצירת טכנולוגיה שמשרתת אנשים",
+      "כנות ושקיפות בכל הקשרים",
+      "איזון בין עבודה, משפחה ורווחה אישית"
+    ]
+  }
+}

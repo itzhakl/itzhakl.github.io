@@ -1,0 +1,185 @@
+[
+  {
+    "category": {
+      "en": "Frontend",
+      "he": "פרונט-אנד"
+    },
+    "items": [
+      {
+        "name": "JavaScript",
+        "icon": "javascript",
+        "level": "advanced"
+      },
+      {
+        "name": "React",
+        "icon": "react",
+        "level": "advanced"
+      },
+      {
+        "name": "Next.js",
+        "icon": "nextjs",
+        "level": "advanced"
+      },
+      {
+        "name": "HTML/CSS",
+        "icon": "html5",
+        "level": "advanced"
+      },
+      {
+        "name": "TailwindCSS",
+        "icon": "tailwind",
+        "level": "advanced"
+      },
+      {
+        "name": "Framer Motion",
+        "icon": "framer",
+        "level": "intermediate"
+      }
+    ]
+  },
+  {
+    "category": {
+      "en": "Backend",
+      "he": "בק-אנד"
+    },
+    "items": [
+      {
+        "name": "Node.js",
+        "icon": "nodejs",
+        "level": "advanced"
+      },
+      {
+        "name": "Python",
+        "icon": "python",
+        "level": "advanced"
+      },
+      {
+        "name": "NestJS",
+        "icon": "nestjs",
+        "level": "intermediate"
+      }
+    ]
+  },
+  {
+    "category": {
+      "en": "GIS & Mapping",
+      "he": "GIS ומיפוי"
+    },
+    "items": [
+      {
+        "name": "GeoJSON",
+        "icon": "geojson",
+        "level": "advanced"
+      },
+      {
+        "name": "OpenLayers",
+        "icon": "openlayers",
+        "level": "advanced"
+      },
+      {
+        "name": "Cesium",
+        "icon": "cesium",
+        "level": "intermediate"
+      }
+    ]
+  },
+  {
+    "category": {
+      "en": "Automation & DevOps",
+      "he": "אוטומציה ו-DevOps"
+    },
+    "items": [
+      {
+        "name": "Cypress",
+        "icon": "cypress",
+        "level": "intermediate"
+      },
+      {
+        "name": "GitHub Actions",
+        "icon": "github",
+        "level": "intermediate"
+      },
+      {
+        "name": "CI/CD",
+        "icon": "cicd",
+        "level": "intermediate"
+      },
+      {
+        "name": "Git",
+        "icon": "git",
+        "level": "advanced"
+      },
+      {
+        "name": "Docker",
+        "icon": "docker",
+        "level": "intermediate"
+      }
+    ]
+  },
+  {
+    "category": {
+      "en": "Databases",
+      "he": "מסדי נתונים"
+    },
+    "items": [
+      {
+        "name": "PostgreSQL",
+        "icon": "postgresql",
+        "level": "advanced"
+      },
+      {
+        "name": "MySQL",
+        "icon": "mysql",
+        "level": "intermediate"
+      },
+      {
+        "name": "MongoDB",
+        "icon": "mongodb",
+        "level": "intermediate"
+      },
+      {
+        "name": "Redis",
+        "icon": "redis",
+        "level": "intermediate"
+      }
+    ]
+  },
+  {
+    "category": {
+      "en": "APIs & Tools",
+      "he": "APIs וכלים"
+    },
+    "items": [
+      {
+        "name": "RESTful APIs",
+        "icon": "api",
+        "level": "advanced"
+      },
+      {
+        "name": "Telegram Bot API",
+        "icon": "telegram",
+        "level": "advanced"
+      },
+      {
+        "name": "GPT API",
+        "icon": "openai",
+        "level": "intermediate"
+      },
+      {
+        "name": "Jira",
+        "icon": "jira",
+        "level": "intermediate"
+      },
+      {
+        "name": "Confluence",
+        "icon": "confluence",
+        "level": "intermediate"
+      },
+      {
+        "name": "Excel",
+        "icon": "excel",
+        "level": "advanced"
+      }
+    ]
+  }
+]
