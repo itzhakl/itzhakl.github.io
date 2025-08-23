@@ -1,12 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useTranslations } from 'next-intl';
 import { Container } from '@/components/ui/Container';
+import { useScrollspy } from '@/lib/hooks/useScrollspy';
+import { cn, scrollToSection } from '@/lib/utils';
+import { useTranslations } from 'next-intl';
+import { useEffect, useState } from 'react';
 import { LanguageToggle } from './LanguageToggle';
 import { SkipLink } from './SkipLink';
-import { useScrollspy } from '@/lib/hooks/useScrollspy';
-import { scrollToSection, cn } from '@/lib/utils';
 
 const navigationSections = [
   { id: 'hero', key: 'home' },
@@ -15,6 +15,7 @@ const navigationSections = [
   { id: 'stack', key: 'stack' },
   { id: 'projects', key: 'projects' },
   { id: 'experience', key: 'experience' },
+  { id: 'personal', key: 'personal' },
   { id: 'contact', key: 'contact' },
 ] as const;
 

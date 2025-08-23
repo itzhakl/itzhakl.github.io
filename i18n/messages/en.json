@@ -6,6 +6,7 @@
     "stack": "Stack",
     "projects": "Projects",
     "experience": "Experience",
+    "personal": "Personal",
     "contact": "Contact",
     "skipToContent": "Skip to content"
   },
@@ -68,7 +69,58 @@
   "experience": {
     "title": "Experience",
     "eyebrow": "Career",
-    "description": "My professional journey and key achievements"
+    "description": "My professional journey and key achievements",
+    "categories": {
+      "idf": "IDF Tech Unit",
+      "civilian": "Civilian Experience"
+    },
+    "idf": {
+      "title": "Full-Stack Developer & Tech Leader",
+      "organization": "IDF J6 & Cyber Defense",
+      "period": "2023 - 2024",
+      "location": "Israel",
+      "summary": "Led development teams and built critical GIS tools and web applications for operational systems",
+      "achievements": [
+        "Led cross-functional development teams of 5+ developers",
+        "Developed interactive GIS tools using React, OpenLayers, and GeoJSON",
+        "Built microservices architecture with Node.js and Python",
+        "Created reusable component libraries reducing development time by 40%",
+        "Mentored junior developers and conducted code reviews",
+        "Managed project workflows using Jira and Confluence",
+        "Implemented automated testing and CI/CD pipelines",
+        "Delivered mission-critical applications under tight deadlines"
+      ]
+    },
+    "civilian": {
+      "starCar": {
+        "title": "Branch Manager",
+        "organization": "Star Car Rental",
+        "period": "2021 - 2022",
+        "location": "Jerusalem, Israel",
+        "summary": "Managed daily operations and customer service for a busy car rental branch",
+        "achievements": [
+          "Managed branch operations and team of 8+ employees",
+          "Improved customer satisfaction scores by 25%",
+          "Streamlined rental processes and inventory management",
+          "Handled complex customer issues and conflict resolution",
+          "Achieved consistent monthly revenue targets"
+        ]
+      },
+      "freelance": {
+        "title": "Freelance Full-Stack Developer",
+        "organization": "Independent",
+        "period": "2024 - Present",
+        "location": "Remote",
+        "summary": "Building AI-powered bots and web systems for various clients",
+        "achievements": [
+          "Developed AI Fitness Coach with Next.js, Node.js, and Python",
+          "Built Anonymous Chat Bot using Node.js and Telegram API",
+          "Created automated systems reducing manual work by 60%",
+          "Integrated GPT API for intelligent conversational interfaces",
+          "Delivered projects on time with 100% client satisfaction"
+        ]
+      }
+    }
   },
   "timeline": {
     "title": "Career Timeline",
@@ -80,14 +132,58 @@
       "idf": "Military Service"
     }
   },
+  "personal": {
+    "title": "Beyond the Code",
+    "eyebrow": "Personal",
+    "description": "The human side behind the developer",
+    "funFacts": {
+      "title": "Fun Facts",
+      "items": [
+        "I enjoy running and sports to clear my mind and stay energized",
+        "Music is my passion - I love playing instruments and discovering new sounds",
+        "I find coding at night with good music to be incredibly productive",
+        "I'm always excited to learn new technologies and experiment with AI tools",
+        "I believe the best solutions come from understanding both the technical and human sides"
+      ]
+    },
+    "interests": {
+      "title": "Interests & Hobbies",
+      "items": [
+        "Running and outdoor sports for mental clarity",
+        "Playing musical instruments and music production",
+        "Exploring AI and machine learning applications",
+        "Building automation tools that solve real problems",
+        "Reading about technology trends and innovations",
+        "Traveling and experiencing different cultures"
+      ]
+    },
+    "values": {
+      "title": "Core Values",
+      "items": [
+        "Personal growth and continuous learning",
+        "Spirituality and mindfulness in daily life",
+        "Building meaningful human connections",
+        "Creating technology that serves people",
+        "Honesty and transparency in all relationships",
+        "Balance between work, family, and personal well-being"
+      ]
+    },
+    "quote": "I believe that great technology comes from understanding people. Whether I'm building a complex GIS system or mentoring a junior developer, it's the human connections and shared growth that make the work truly meaningful."
+  },
   "contact": {
     "title": "Get In Touch",
     "eyebrow": "Contact",
-    "description": "Let's connect and discuss opportunities",
+    "description": "Feel free to reach out for collaborations or just to say hi!",
     "email": "Email",
     "whatsapp": "WhatsApp",
     "linkedin": "LinkedIn",
-    "github": "GitHub"
+    "github": "GitHub",
+    "buttons": {
+      "email": "Send me an email",
+      "whatsapp": "Message me on WhatsApp",
+      "linkedin": "Connect with me on LinkedIn",
+      "github": "Visit my GitHub profile"
+    }
   },
   "language": {
     "switchTo": "Switch to {language}",
