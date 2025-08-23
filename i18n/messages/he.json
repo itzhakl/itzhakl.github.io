@@ -9,11 +9,17 @@
     "skipToContent": "דלג לתוכן"
   },
   "hero": {
-    "greeting": "שלום, אני",
-    "tagline": "מפתח Full Stack וחובב בינה מלאכותית",
+    "greeting": "היי שם 👋, אני איציק לשינסקי",
+    "tagline": "מפתח פול סטאק | מערכות GIS ואתרים | מוביל טכנולוגי",
     "description": "בונה אפליקציות ווב מודרניות עם טכנולוגיות מתקדמות",
     "viewProjects": "צפה בפרויקטים",
-    "getInTouch": "צור קשר"
+    "getInTouch": "צור קשר",
+    "socialLinks": {
+      "github": "בקר בפרופיל הגיטהאב שלי",
+      "linkedin": "התחבר אליי בלינקדאין",
+      "email": "שלח לי אימייל",
+      "whatsapp": "שלח לי הודעה בוואטסאפ"
+    }
   },
   "about": {
     "title": "אודותיי",

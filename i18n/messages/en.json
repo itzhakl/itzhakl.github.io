@@ -9,11 +9,17 @@
     "skipToContent": "Skip to content"
   },
   "hero": {
-    "greeting": "Hi, I'm",
-    "tagline": "Full Stack Developer & AI Enthusiast",
+    "greeting": "Hi there 👋, I'm Itzhak Leshinsky",
+    "tagline": "Full-Stack Developer | GIS & Web Systems | Tech Leader",
     "description": "Building modern web applications with cutting-edge technologies",
     "viewProjects": "View Projects",
-    "getInTouch": "Get in Touch"
+    "getInTouch": "Get in Touch",
+    "socialLinks": {
+      "github": "Visit my GitHub profile",
+      "linkedin": "Connect with me on LinkedIn",
+      "email": "Send me an email",
+      "whatsapp": "Message me on WhatsApp"
+    }
   },
   "about": {
     "title": "About Me",

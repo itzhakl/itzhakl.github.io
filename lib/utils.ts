@@ -13,7 +13,7 @@ export const scrollToSection = (sectionId: string, offset: number = 80) => {
   if (!element) return;
 
   const elementPosition = element.getBoundingClientRect().top;
-  const offsetPosition = elementPosition + window.pageYOffset - offset;
+  const offsetPosition = elementPosition + window.scrollY - offset;
 
   window.scrollTo({
     top: offsetPosition,
