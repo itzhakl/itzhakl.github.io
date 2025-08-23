@@ -1,9 +1,9 @@
-import { getTranslations } from 'next-intl/server';
-import { setRequestLocale } from 'next-intl/server';
-import { locales } from '@/lib/i18n';
 import { Navbar } from '@/components/navigation';
+import { About, Hero, Stack, Timeline } from '@/components/sections';
 import { Container } from '@/components/ui/Container';
-import { Hero, About, Timeline } from '@/components/sections';
+import { loadStack } from '@/lib/content';
+import { locales } from '@/lib/i18n';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
@@ -22,6 +22,9 @@ const HomePage = async ({ params }: HomePageProps) => {
 
   const t = await getTranslations();
 
+  // Load content data on server side
+  const stackData = loadStack();
+
   return (
     <>
       <Navbar />
@@ -39,18 +42,9 @@ const HomePage = async ({ params }: HomePageProps) => {
         <Timeline />
 
         {/* Stack Section */}
-        <section id="stack" className="bg-muted/30 py-20">
-          <Container>
-            <div className="text-center">
-              <h2 className="mb-6 text-3xl font-bold md:text-4xl">
-                {t('stack.title')}
-              </h2>
-              <p className="mx-auto max-w-3xl text-lg text-muted-foreground">
-                {t('stack.description')}
-              </p>
-            </div>
-          </Container>
-        </section>
+        <div className="bg-muted/30">
+          <Stack stackData={stackData} />
+        </div>
 
         {/* Projects Section */}
         <section id="projects" className="py-20">

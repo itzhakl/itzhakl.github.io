@@ -6,6 +6,7 @@
     "dev": "next dev",
     "dev:clean": "npm run clean && next dev",
     "build": "npm run validate-content && next build",
+    "build:clean": "npm run clean && npm run build",
     "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
@@ -14,6 +15,8 @@
     "type-check": "tsc --noEmit",
     "validate-content": "tsx scripts/validate-content.ts",
     "clean": "rimraf .next && rimraf node_modules/.cache",
+    "clean:all": "rimraf .next && rimraf node_modules/.cache && rimraf node_modules && npm install",
+    "reset": "npm run clean:all && npm run build",
     "prepare": "husky install"
   },
   "dependencies": {

@@ -17,6 +17,11 @@
 # production
 /build
 
+# cache directories
+node_modules/.cache/
+.cache/
+.parcel-cache/
+
 # misc
 .DS_Store
 *.pem

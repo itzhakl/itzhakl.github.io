@@ -1,12 +1,13 @@
-import { forwardRef } from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { forwardRef } from 'react';
 
 const sectionHeadingVariants = cva('space-y-2', {
   variants: {
     align: {
       left: 'text-left',
       center: 'text-center',
+      right: 'text-right',
     },
   },
   defaultVariants: {
@@ -21,6 +22,7 @@ const eyebrowVariants = cva(
       align: {
         left: 'text-left',
         center: 'text-center',
+        right: 'text-right',
       },
     },
     defaultVariants: {
@@ -36,6 +38,7 @@ const titleVariants = cva(
       align: {
         left: 'text-left',
         center: 'text-center',
+        right: 'text-right',
       },
     },
     defaultVariants: {
@@ -49,6 +52,7 @@ const descriptionVariants = cva('text-lg text-muted-foreground max-w-2xl', {
     align: {
       left: 'text-left',
       center: 'text-center mx-auto',
+      right: 'text-right ml-auto',
     },
   },
   defaultVariants: {
