@@ -1,0 +1,53 @@
+{
+  "navigation": {
+    "home": "בית",
+    "about": "אודות",
+    "stack": "טכנולוגיות",
+    "projects": "פרויקטים",
+    "experience": "ניסיון",
+    "contact": "צור קשר",
+    "skipToContent": "דלג לתוכן"
+  },
+  "hero": {
+    "greeting": "שלום, אני",
+    "tagline": "מפתח Full Stack וחובב בינה מלאכותית",
+    "description": "בונה אפליקציות ווב מודרניות עם טכנולוגיות מתקדמות",
+    "viewProjects": "צפה בפרויקטים",
+    "getInTouch": "צור קשר"
+  },
+  "about": {
+    "title": "אודותיי",
+    "eyebrow": "היכרות",
+    "description": "מפתח נלהב עם ניסיון בטכנולוגיות ווב מודרניות ובינה מלאכותית"
+  },
+  "stack": {
+    "title": "טכנולוגיות",
+    "eyebrow": "כלים",
+    "description": "הטכנולוגיות והכלים שאני עובד איתם"
+  },
+  "projects": {
+    "title": "פרויקטים נבחרים",
+    "eyebrow": "תיק עבודות",
+    "description": "חלק מהעבודות האחרונות והפרויקטים האישיים שלי",
+    "viewProject": "צפה בפרויקט",
+    "viewCode": "צפה בקוד"
+  },
+  "experience": {
+    "title": "ניסיון מקצועי",
+    "eyebrow": "קריירה",
+    "description": "המסע המקצועי שלי וההישגים המרכזיים"
+  },
+  "contact": {
+    "title": "צור קשר",
+    "eyebrow": "יצירת קשר",
+    "description": "בואו נתחבר ונדבר על הזדמנויות",
+    "email": "אימייל",
+    "whatsapp": "וואטסאפ",
+    "linkedin": "לינקדאין",
+    "github": "גיטהאב"
+  },
+  "language": {
+    "switchTo": "עבור ל{language}",
+    "current": "שפה נוכחית: {language}"
+  }
+}

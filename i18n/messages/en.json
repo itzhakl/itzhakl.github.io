@@ -1,0 +1,53 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "stack": "Stack",
+    "projects": "Projects",
+    "experience": "Experience",
+    "contact": "Contact",
+    "skipToContent": "Skip to content"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "tagline": "Full Stack Developer & AI Enthusiast",
+    "description": "Building modern web applications with cutting-edge technologies",
+    "viewProjects": "View Projects",
+    "getInTouch": "Get in Touch"
+  },
+  "about": {
+    "title": "About Me",
+    "eyebrow": "Introduction",
+    "description": "Passionate developer with experience in modern web technologies and AI/ML"
+  },
+  "stack": {
+    "title": "Tech Stack",
+    "eyebrow": "Technologies",
+    "description": "Technologies and tools I work with"
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "eyebrow": "Portfolio",
+    "description": "Some of my recent work and side projects",
+    "viewProject": "View Project",
+    "viewCode": "View Code"
+  },
+  "experience": {
+    "title": "Experience",
+    "eyebrow": "Career",
+    "description": "My professional journey and key achievements"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "eyebrow": "Contact",
+    "description": "Let's connect and discuss opportunities",
+    "email": "Email",
+    "whatsapp": "WhatsApp",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
+  },
+  "language": {
+    "switchTo": "Switch to {language}",
+    "current": "Current language: {language}"
+  }
+}
