@@ -1,19 +1,19 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
-import { IconButton } from '@/components/ui/IconButton';
 import { Container } from '@/components/ui/Container';
-import { scrollToSection } from '@/lib/utils';
+import { IconButton } from '@/components/ui/IconButton';
 import {
-  heroGreeting,
-  heroTagline,
   heroActions,
+  heroGreeting,
   heroSocial,
+  heroTagline,
   staggerContainer,
 } from '@/lib/motion';
+import { scrollToSection } from '@/lib/utils';
+import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, MessageCircle } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export const Hero = () => {
   const t = useTranslations('hero');
@@ -53,7 +53,9 @@ export const Hero = () => {
     <section
       id="hero"
       className="flex min-h-screen items-center justify-center pt-16"
-      aria-label="Hero section"
+      aria-labelledby="hero-heading"
+      role="banner"
+      tabIndex={-1}
     >
       <Container>
         <motion.div
@@ -64,8 +66,11 @@ export const Hero = () => {
         >
           {/* Greeting with gradient name */}
           <motion.h1
+            id="hero-heading"
             className="mb-6 text-4xl font-bold leading-tight md:text-6xl lg:text-7xl"
             variants={heroGreeting}
+            role="heading"
+            aria-level={1}
           >
             <span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">
               {t('greeting')}
@@ -108,6 +113,8 @@ export const Hero = () => {
           <motion.div
             className="flex items-center justify-center gap-4"
             variants={heroSocial}
+            role="group"
+            aria-label="Social media links"
           >
             {socialLinks.map((link) => {
               const IconComponent = link.icon;
@@ -119,9 +126,10 @@ export const Hero = () => {
                   variant="ghost"
                   size="lg"
                   aria-label={link['aria-label']}
-                  className="transition-transform hover:scale-110"
+                  className="transition-transform hover:scale-110 focus:scale-110"
+                  title={link.label}
                 >
-                  <IconComponent className="h-6 w-6" />
+                  <IconComponent className="h-6 w-6" aria-hidden="true" />
                 </IconButton>
               );
             })}

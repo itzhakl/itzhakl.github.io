@@ -59,7 +59,8 @@ export const Contact = () => {
     <section
       id="contact"
       className="py-20"
-      aria-label="Contact section"
+      aria-labelledby="contact-heading"
+      tabIndex={-1}
       ref={ref}
     >
       <Container>
@@ -75,6 +76,7 @@ export const Contact = () => {
               title={t('title')}
               description={t('description')}
               align="center"
+              headingId="contact-heading"
             />
           </motion.div>
 
@@ -86,6 +88,8 @@ export const Contact = () => {
                 variants={contactContainer}
                 initial="initial"
                 animate={isInView ? 'animate' : 'initial'}
+                role="list"
+                aria-label="Contact methods"
               >
                 {contactMethods.map((method) => {
                   const IconComponent = method.icon;
@@ -98,6 +102,7 @@ export const Contact = () => {
                         transition: { duration: 0.2 },
                       }}
                       whileTap={{ scale: 0.95 }}
+                      role="listitem"
                     >
                       <Button
                         href={method.href}
@@ -112,7 +117,10 @@ export const Contact = () => {
                         `}
                         aria-label={method.ariaLabel}
                       >
-                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 transition-transform group-hover:scale-110">
+                        <div
+                          className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 transition-transform group-hover:scale-110"
+                          aria-hidden="true"
+                        >
                           <IconComponent className="h-6 w-6" />
                         </div>
                         <span className="text-sm font-medium">

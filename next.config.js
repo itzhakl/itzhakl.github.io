@@ -1,4 +1,7 @@
 const createNextIntlPlugin = require('next-intl/plugin');
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
 
 const withNextIntl = createNextIntlPlugin('./lib/i18n.ts');
 
@@ -7,10 +10,82 @@ const nextConfig = {
   typedRoutes: true,
   images: {
     formats: ['image/webp', 'image/avif'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    qualities: [50, 75, 85, 90, 95],
+    minimumCacheTTL: 31536000, // 1 year
+    dangerouslyAllowSVG: false,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   // Better hot reload and development experience
   experimental: {
-    optimizePackageImports: ['zod', 'framer-motion', 'lucide-react'],
+    optimizePackageImports: [
+      'zod',
+      'framer-motion',
+      'lucide-react',
+      'next-intl',
+    ],
+  },
+  // Performance optimizations
+  compress: true,
+  poweredByHeader: false,
+  generateEtags: true,
+  // Caching headers
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on',
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block',
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'origin-when-cross-origin',
+          },
+        ],
+      },
+      {
+        source: '/assets/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/_next/static/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/_next/image/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
   },
   // Improve build stability
   onDemandEntries: {
@@ -18,6 +93,15 @@ const nextConfig = {
     pagesBufferLength: 2,
   },
   webpack: (config, { isServer, dev }) => {
+    // Exclude dev components from production builds
+    if (!dev) {
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        '@/components/dev': false,
+        '@/lib/accessibility-testing': false,
+      };
+    }
+
     // Fix for vendor chunk issues
     if (!isServer) {
       config.resolve.fallback = {
@@ -49,14 +133,40 @@ const nextConfig = {
     if (!dev && !isServer) {
       config.optimization.splitChunks = {
         chunks: 'all',
+        minSize: 20000,
+        maxSize: 244000,
         cacheGroups: {
           default: false,
           vendors: false,
-          // Vendor chunk
+          // Framework chunk (React, Next.js)
+          framework: {
+            name: 'framework',
+            chunks: 'all',
+            test: /[\\/]node_modules[\\/](react|react-dom|next)[\\/]/,
+            priority: 40,
+            enforce: true,
+          },
+          // Animation libraries chunk
+          animations: {
+            name: 'animations',
+            chunks: 'all',
+            test: /[\\/]node_modules[\\/](framer-motion)[\\/]/,
+            priority: 30,
+            enforce: true,
+          },
+          // UI libraries chunk
+          ui: {
+            name: 'ui',
+            chunks: 'all',
+            test: /[\\/]node_modules[\\/](lucide-react|class-variance-authority|clsx|tailwind-merge)[\\/]/,
+            priority: 25,
+            enforce: true,
+          },
+          // Vendor chunk for other libraries
           vendor: {
             name: 'vendor',
             chunks: 'all',
-            test: /node_modules/,
+            test: /[\\/]node_modules[\\/]/,
             priority: 20,
           },
           // Common chunk
@@ -76,4 +186,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withNextIntl(nextConfig);
+module.exports = withBundleAnalyzer(withNextIntl(nextConfig));

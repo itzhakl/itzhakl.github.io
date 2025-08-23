@@ -1,6 +1,6 @@
-import { forwardRef } from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { forwardRef } from 'react';
 
 const iconButtonVariants = cva(
   'inline-flex items-center justify-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
@@ -37,6 +37,11 @@ export interface IconButtonProps
 
 const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
   ({ className, variant, size, href, external, children, ...props }, ref) => {
+    const ariaLabel =
+      external && href
+        ? `${props['aria-label']} (opens in new tab)`
+        : props['aria-label'];
+
     if (href) {
       return (
         <a
@@ -46,9 +51,12 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
             target: '_blank',
             rel: 'noopener noreferrer',
           })}
-          aria-label={props['aria-label']}
+          aria-label={ariaLabel}
+          role="button"
+          title={props['aria-label']}
         >
           {children}
+          {external && <span className="sr-only"> (opens in new tab)</span>}
         </a>
       );
     }
@@ -57,6 +65,8 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       <button
         className={cn(iconButtonVariants({ variant, size, className }))}
         ref={ref}
+        type={props.type || 'button'}
+        title={props['aria-label']}
         {...props}
       >
         {children}

@@ -67,6 +67,8 @@ export interface SectionHeadingProps
   title: string;
   description?: string;
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  headingId?: string;
+  level?: number;
 }
 
 const SectionHeading = forwardRef<HTMLDivElement, SectionHeadingProps>(
@@ -78,6 +80,8 @@ const SectionHeading = forwardRef<HTMLDivElement, SectionHeadingProps>(
       title,
       description,
       as: Comp = 'h2',
+      headingId,
+      level,
       ...props
     },
     ref
@@ -96,9 +100,20 @@ const SectionHeading = forwardRef<HTMLDivElement, SectionHeadingProps>(
             {eyebrow}
           </p>
         )}
-        <Comp className={cn(titleVariants({ align }))}>{title}</Comp>
+        <Comp
+          id={headingId}
+          className={cn(titleVariants({ align }))}
+          {...(level && { 'aria-level': level })}
+        >
+          {title}
+        </Comp>
         {description && (
-          <p className={cn(descriptionVariants({ align }))}>{description}</p>
+          <p
+            className={cn(descriptionVariants({ align }))}
+            aria-describedby={headingId}
+          >
+            {description}
+          </p>
         )}
       </div>
     );

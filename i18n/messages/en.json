@@ -188,5 +188,33 @@
   "language": {
     "switchTo": "Switch to {language}",
     "current": "Current language: {language}"
+  },
+  "accessibility": {
+    "skipToContent": "Skip to main content",
+    "skipToNavigation": "Skip to navigation",
+    "navigationMenu": "Main navigation menu",
+    "socialLinks": "Social media links",
+    "projectsList": "List of featured projects",
+    "contactMethods": "Available contact methods",
+    "keyboardShortcuts": {
+      "altH": "Press Alt+H to go to home section",
+      "altN": "Press Alt+N to focus navigation",
+      "altC": "Press Alt+C to go to contact section"
+    },
+    "announcements": {
+      "pageLoaded": "Portfolio page loaded. Use keyboard shortcuts for quick navigation.",
+      "sectionNavigated": "Navigated to {section} section",
+      "menuOpened": "Mobile menu opened",
+      "menuClosed": "Mobile menu closed",
+      "languageChanged": "Language changed to {language}"
+    },
+    "labels": {
+      "internalProject": "Internal project - source code not publicly available",
+      "externalLink": "Opens in new tab",
+      "currentSection": "Current section",
+      "projectImage": "Project screenshot",
+      "loading": "Loading content",
+      "error": "Error loading content"
+    }
   }
 }

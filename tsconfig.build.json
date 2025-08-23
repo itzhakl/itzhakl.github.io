@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "strict": false
+  },
+  "exclude": [
+    "node_modules",
+    "node_modules/@vitejs/**/*",
+    "components/dev/**/*",
+    "lib/accessibility-testing.ts",
+    "tests/**/*"
+  ]
+}

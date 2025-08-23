@@ -188,5 +188,33 @@
   "language": {
     "switchTo": "עבור ל{language}",
     "current": "שפה נוכחית: {language}"
+  },
+  "accessibility": {
+    "skipToContent": "דלג לתוכן הראשי",
+    "skipToNavigation": "דלג לניווט",
+    "navigationMenu": "תפריט ניווט ראשי",
+    "socialLinks": "קישורי רשתות חברתיות",
+    "projectsList": "רשימת פרויקטים נבחרים",
+    "contactMethods": "דרכי יצירת קשר זמינות",
+    "keyboardShortcuts": {
+      "altH": "לחץ Alt+H כדי לעבור לקטע הבית",
+      "altN": "לחץ Alt+N כדי להתמקד בניווט",
+      "altC": "לחץ Alt+C כדי לעבור לקטע יצירת הקשר"
+    },
+    "announcements": {
+      "pageLoaded": "עמוד התיק נטען. השתמש בקיצורי מקלדת לניווט מהיר.",
+      "sectionNavigated": "ניווט לקטע {section}",
+      "menuOpened": "תפריט נייד נפתח",
+      "menuClosed": "תפריט נייד נסגר",
+      "languageChanged": "השפה שונתה ל{language}"
+    },
+    "labels": {
+      "internalProject": "פרויקט פנימי - קוד המקור אינו זמין לציבור",
+      "externalLink": "נפתח בכרטיסייה חדשה",
+      "currentSection": "קטע נוכחי",
+      "projectImage": "צילום מסך של הפרויקט",
+      "loading": "טוען תוכן",
+      "error": "שגיאה בטעינת התוכן"
+    }
   }
 }

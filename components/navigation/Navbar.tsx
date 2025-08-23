@@ -1,6 +1,11 @@
 'use client';
 
 import { Container } from '@/components/ui/Container';
+import {
+  announceToScreenReader,
+  useFocusTrap,
+  useKeyboardNavigation,
+} from '@/lib/accessibility';
 import { useScrollspy } from '@/lib/hooks/useScrollspy';
 import { cn, scrollToSection } from '@/lib/utils';
 import { useTranslations } from 'next-intl';
@@ -74,6 +79,15 @@ const Navbar = ({ className }: NavbarProps) => {
   const handleNavClick = (sectionId: string) => {
     scrollToSection(sectionId);
     setIsMobileMenuOpen(false);
+
+    // Announce navigation to screen readers
+    const sectionName = navigationSections.find((s) => s.id === sectionId)?.key;
+    if (sectionName) {
+      announceToScreenReader(
+        `Navigated to ${t(sectionName)} section`,
+        'assertive'
+      );
+    }
   };
 
   const handleKeyDown = (event: React.KeyboardEvent, sectionId: string) => {
@@ -82,6 +96,40 @@ const Navbar = ({ className }: NavbarProps) => {
       handleNavClick(sectionId);
     }
   };
+
+  // Focus trap for mobile menu
+  const mobileMenuRef = useFocusTrap(isMobileMenuOpen);
+
+  // Keyboard navigation for mobile menu
+  const mobileMenuKeyboard = useKeyboardNavigation(
+    undefined, // onEnter
+    undefined, // onSpace
+    () => setIsMobileMenuOpen(false), // onEscape
+    (direction) => {
+      // Handle arrow key navigation in mobile menu
+      if (!isMobileMenuOpen) return;
+
+      const focusableElements = mobileMenuRef.current?.querySelectorAll(
+        'button:not([disabled]), a[href]'
+      ) as NodeListOf<HTMLElement>;
+
+      if (!focusableElements.length) return;
+
+      const currentIndex = Array.from(focusableElements).indexOf(
+        document.activeElement as HTMLElement
+      );
+      let nextIndex = currentIndex;
+
+      if (direction === 'down' || direction === 'right') {
+        nextIndex = (currentIndex + 1) % focusableElements.length;
+      } else if (direction === 'up' || direction === 'left') {
+        nextIndex =
+          currentIndex <= 0 ? focusableElements.length - 1 : currentIndex - 1;
+      }
+
+      focusableElements[nextIndex]?.focus();
+    }
+  );
 
   return (
     <>
@@ -184,6 +232,7 @@ const Navbar = ({ className }: NavbarProps) => {
           {/* Mobile Menu */}
           <div
             id="mobile-menu"
+            ref={mobileMenuRef}
             data-mobile-menu
             className={cn(
               'overflow-hidden transition-all duration-300 ease-in-out md:hidden',
@@ -191,7 +240,11 @@ const Navbar = ({ className }: NavbarProps) => {
                 ? 'max-h-96 pb-4 opacity-100'
                 : 'max-h-0 pb-0 opacity-0'
             )}
+            role="menu"
+            aria-label="Mobile navigation menu"
+            aria-hidden={!isMobileMenuOpen}
             {...(!isMobileMenuOpen && { inert: true })}
+            {...mobileMenuKeyboard}
           >
             <div className="mt-2 space-y-1 rounded-lg border border-border/50 bg-background/95 px-2 pb-3 pt-2 backdrop-blur-sm">
               {navigationSections.map((section) => (
@@ -207,9 +260,11 @@ const Navbar = ({ className }: NavbarProps) => {
                       ? 'bg-accent/30 text-primary'
                       : 'text-muted-foreground'
                   )}
+                  role="menuitem"
                   aria-current={
                     activeSection === section.id ? 'page' : undefined
                   }
+                  aria-label={`Navigate to ${t(section.key)} section`}
                   tabIndex={isMobileMenuOpen ? 0 : -1}
                 >
                   {t(section.key)}
