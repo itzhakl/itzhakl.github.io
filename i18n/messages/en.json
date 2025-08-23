@@ -2,6 +2,7 @@
   "navigation": {
     "home": "Home",
     "about": "About",
+    "timeline": "Timeline",
     "stack": "Stack",
     "projects": "Projects",
     "experience": "Experience",
@@ -24,7 +25,33 @@
   "about": {
     "title": "About Me",
     "eyebrow": "Introduction",
-    "description": "Passionate developer with experience in modern web technologies and AI/ML"
+    "description": "Passionate Full-Stack Developer with expertise in GIS systems, team leadership, and AI-powered automation tools",
+    "summary": {
+      "title": "Professional Summary",
+      "paragraph1": "I'm a Full-Stack Developer with extensive experience in modern web technologies and GIS systems. My journey began in the IDF tech units where I developed leadership skills while building complex web applications and GIS tools that serve critical operational needs.",
+      "paragraph2": "I specialize in React, Node.js, Next.js, and Python, with a particular passion for creating reusable libraries and automation tools. My experience spans from microservices architecture to AI-powered chatbots, always focusing on clean code and scalable solutions.",
+      "paragraph3": "Beyond technical skills, I'm passionate about mentoring developers, leading cross-functional teams, and bridging the gap between complex technical requirements and user-friendly solutions. I thrive in environments where I can combine technical expertise with strategic thinking."
+    },
+    "strengths": {
+      "title": "Core Strengths",
+      "technical": "Technical Expertise",
+      "leadership": "Leadership & Soft Skills",
+      "description": "Combining deep technical knowledge with strong leadership abilities to deliver exceptional results in complex projects."
+    },
+    "highlights": {
+      "fullstack": {
+        "title": "Full-Stack Development",
+        "description": "End-to-end development with React, Node.js, Next.js, and Python, creating scalable web applications."
+      },
+      "gis": {
+        "title": "GIS Specialization",
+        "description": "Expert in GeoJSON, OpenLayers, and Cesium for building interactive mapping and geospatial applications."
+      },
+      "leadership": {
+        "title": "Tech Leadership",
+        "description": "Leading development teams, mentoring junior developers, and managing complex technical projects."
+      }
+    }
   },
   "stack": {
     "title": "Tech Stack",
@@ -42,6 +69,16 @@
     "title": "Experience",
     "eyebrow": "Career",
     "description": "My professional journey and key achievements"
+  },
+  "timeline": {
+    "title": "Career Timeline",
+    "eyebrow": "Journey",
+    "description": "My professional journey from management to tech leadership",
+    "categories": {
+      "civilian": "Civilian Career",
+      "education": "Education & Training",
+      "idf": "Military Service"
+    }
   },
   "contact": {
     "title": "Get In Touch",

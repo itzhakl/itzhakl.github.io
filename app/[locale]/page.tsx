@@ -3,7 +3,7 @@ import { setRequestLocale } from 'next-intl/server';
 import { locales } from '@/lib/i18n';
 import { Navbar } from '@/components/navigation';
 import { Container } from '@/components/ui/Container';
-import { Hero } from '@/components/sections';
+import { Hero, About, Timeline } from '@/components/sections';
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
@@ -33,18 +33,10 @@ const HomePage = async ({ params }: HomePageProps) => {
         <Hero />
 
         {/* About Section */}
-        <section id="about" className="py-20">
-          <Container>
-            <div className="text-center">
-              <h2 className="mb-6 text-3xl font-bold md:text-4xl">
-                {t('about.title')}
-              </h2>
-              <p className="mx-auto max-w-3xl text-lg text-muted-foreground">
-                {t('about.description')}
-              </p>
-            </div>
-          </Container>
-        </section>
+        <About />
+
+        {/* Timeline Section */}
+        <Timeline />
 
         {/* Stack Section */}
         <section id="stack" className="bg-muted/30 py-20">

@@ -11,6 +11,7 @@ import { scrollToSection, cn } from '@/lib/utils';
 const navigationSections = [
   { id: 'hero', key: 'home' },
   { id: 'about', key: 'about' },
+  { id: 'timeline', key: 'timeline' },
   { id: 'stack', key: 'stack' },
   { id: 'projects', key: 'projects' },
   { id: 'experience', key: 'experience' },
@@ -189,7 +190,7 @@ const Navbar = ({ className }: NavbarProps) => {
                 ? 'max-h-96 pb-4 opacity-100'
                 : 'max-h-0 pb-0 opacity-0'
             )}
-            aria-hidden={!isMobileMenuOpen}
+            {...(!isMobileMenuOpen && { inert: true })}
           >
             <div className="mt-2 space-y-1 rounded-lg border border-border/50 bg-background/95 px-2 pb-3 pt-2 backdrop-blur-sm">
               {navigationSections.map((section) => (
@@ -208,6 +209,7 @@ const Navbar = ({ className }: NavbarProps) => {
                   aria-current={
                     activeSection === section.id ? 'page' : undefined
                   }
+                  tabIndex={isMobileMenuOpen ? 0 : -1}
                 >
                   {t(section.key)}
                 </button>
