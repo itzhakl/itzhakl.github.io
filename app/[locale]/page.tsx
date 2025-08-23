@@ -1,5 +1,5 @@
 import { Navbar } from '@/components/navigation';
-import { About, Hero, Stack, Timeline } from '@/components/sections';
+import { About, Hero, Projects, Stack, Timeline } from '@/components/sections';
 import { Container } from '@/components/ui/Container';
 import { loadStack } from '@/lib/content';
 import { locales } from '@/lib/i18n';
@@ -47,18 +47,7 @@ const HomePage = async ({ params }: HomePageProps) => {
         </div>
 
         {/* Projects Section */}
-        <section id="projects" className="py-20">
-          <Container>
-            <div className="text-center">
-              <h2 className="mb-6 text-3xl font-bold md:text-4xl">
-                {t('projects.title')}
-              </h2>
-              <p className="mx-auto max-w-3xl text-lg text-muted-foreground">
-                {t('projects.description')}
-              </p>
-            </div>
-          </Container>
-        </section>
+        <Projects />
 
         {/* Experience Section */}
         <section id="experience" className="bg-muted/30 py-20">

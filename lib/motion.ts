@@ -229,3 +229,41 @@ export const stackItem: Variants = {
     },
   },
 };
+
+// Projects specific animations
+export const projectsContainer: Variants = {
+  initial: {},
+  animate: {
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+export const projectCard: Variants = {
+  initial: {
+    opacity: 0,
+    y: 30,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: 'easeOut',
+    },
+  },
+};
+
+export const projectCardHover: Variants = {
+  hover: {
+    y: -8,
+    rotateX: 5,
+    rotateY: 5,
+    transition: {
+      duration: 0.3,
+      ease: 'easeOut',
+    },
+  },
+};

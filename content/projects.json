@@ -21,7 +21,7 @@
     "links": {
       "github": "https://github.com/itzhakl/ai-fitness-coach"
     },
-    "image": "/assets/projects/ai-fitness-coach.jpg",
+    "image": "/assets/projects/ai-fitness-coach.svg",
     "featured": true,
     "role": {
       "en": "Full-Stack Developer & AI Integration Specialist",
@@ -53,7 +53,7 @@
     "links": {
       "github": "https://github.com/itzhakl/anonymous-chat-bot"
     },
-    "image": "/assets/projects/anonymous-chat-bot.jpg",
+    "image": "/assets/projects/anonymous-chat-bot.svg",
     "featured": true,
     "role": {
       "en": "Backend Developer & Security Architect",
@@ -84,7 +84,7 @@
       "WebGL"
     ],
     "links": {},
-    "image": "/assets/projects/gis-tools.jpg",
+    "image": "/assets/projects/gis-tools.svg",
     "featured": true,
     "isInternal": true,
     "role": {
@@ -118,7 +118,7 @@
       "github": "https://github.com/itzhakl/portfolio",
       "live": "https://itzhak-leshinsky.vercel.app"
     },
-    "image": "/assets/projects/modern-portfolio.jpg",
+    "image": "/assets/projects/modern-portfolio.svg",
     "featured": false,
     "role": {
       "en": "Full-Stack Developer & UI/UX Designer",

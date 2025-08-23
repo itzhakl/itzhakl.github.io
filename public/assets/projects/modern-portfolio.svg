@@ -1,0 +1,15 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#1f2937"/>
+  <rect x="50" y="50" width="300" height="200" rx="8" fill="#374151"/>
+  <rect x="70" y="70" width="260" height="30" rx="4" fill="#60a5fa"/>
+  <rect x="70" y="110" width="80" height="60" rx="4" fill="#9ca3af"/>
+  <rect x="160" y="110" width="80" height="60" rx="4" fill="#9ca3af"/>
+  <rect x="250" y="110" width="80" height="60" rx="4" fill="#9ca3af"/>
+  <rect x="70" y="180" width="260" height="8" rx="4" fill="#6b7280"/>
+  <rect x="70" y="195" width="200" height="8" rx="4" fill="#6b7280"/>
+  <rect x="70" y="210" width="180" height="8" rx="4" fill="#6b7280"/>
+  <circle cx="310" cy="230" r="8" fill="#10b981"/>
+  <circle cx="290" cy="230" r="8" fill="#60a5fa"/>
+  <circle cx="270" cy="230" r="8" fill="#f59e0b"/>
+  <text x="200" y="285" text-anchor="middle" fill="#e5e7eb" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Modern Portfolio</text>
+</svg>
