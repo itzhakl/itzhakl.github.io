@@ -8,7 +8,11 @@ const nextConfig = {
   images: {
     formats: ['image/webp', 'image/avif'],
   },
-  webpack: (config, { isServer }) => {
+  // Better hot reload and development experience
+  experimental: {
+    optimizePackageImports: ['zod'],
+  },
+  webpack: (config, { isServer, dev }) => {
     // Fix for vendor chunk issues
     if (!isServer) {
       config.resolve.fallback = {
@@ -18,6 +22,15 @@ const nextConfig = {
         tls: false,
       };
     }
+
+    // Better hot reload in development
+    if (dev) {
+      config.watchOptions = {
+        poll: 1000,
+        aggregateTimeout: 300,
+      };
+    }
+
     return config;
   },
 };
