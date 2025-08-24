@@ -9,6 +9,8 @@ import { Card } from '@/components/ui/Card';
 import { Container } from '@/components/ui/Container';
 import { IconButton } from '@/components/ui/IconButton';
 import { SectionHeading } from '@/components/ui/SectionHeading';
+import React from 'react';
+import { vi } from 'vitest';
 
 expect.extend(toHaveNoViolations);
 

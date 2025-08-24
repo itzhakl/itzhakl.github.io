@@ -1,10 +1,10 @@
 'use client';
 
-import { useLocale, useTranslations } from 'next-intl';
-import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/Button';
 import { localeNames, type Locale } from '@/lib/i18n';
 import { cn } from '@/lib/utils';
+import { useLocale, useTranslations } from 'next-intl';
+import { usePathname } from 'next/navigation';
 
 interface LanguageToggleProps {
   className?: string;
@@ -42,6 +42,7 @@ const LanguageToggle = ({ className }: LanguageToggleProps) => {
       )}
       aria-label={t('switchTo', { language: nextLanguageName })}
       title={t('switchTo', { language: nextLanguageName })}
+      data-testid="language-toggle"
     >
       <span className="hidden sm:inline">{nextLanguageName}</span>
       <span className="sm:hidden">{nextLocale.toUpperCase()}</span>

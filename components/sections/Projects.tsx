@@ -18,7 +18,7 @@ import { projectCard, projectsContainer } from '@/lib/motion';
 
 // Import projects data
 import projectsData from '@/content/projects.json';
-import { FaLock, FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaExternalLinkAlt, FaGithub, FaLock } from 'react-icons/fa';
 
 interface Project {
   slug: string;
@@ -100,6 +100,7 @@ export const Projects = () => {
                 variants={projectCard}
                 className="group h-full"
                 role="listitem"
+                data-testid="project-card"
               >
                 <div className="flex h-full flex-col overflow-hidden rounded-lg border border-border/50 bg-card/50 text-card-foreground shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-card-hover hover:shadow-md group-hover:border-primary/20">
                   {/* Project Image */}

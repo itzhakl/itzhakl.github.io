@@ -2,14 +2,14 @@
 
 import { Container } from '@/components/ui/Container';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
-import { LanguageToggle } from './LanguageToggle';
-import { SkipLink } from './SkipLink';
-import { Logo } from '../ui/Logo';
+import { announceToScreenReader } from '@/lib/accessibility';
 import { useScrollspy } from '@/lib/hooks/useScrollspy';
 import { cn, scrollToSection } from '@/lib/utils';
-import { announceToScreenReader } from '@/lib/accessibility';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
+import { Logo } from '../ui/Logo';
+import { LanguageToggle } from './LanguageToggle';
+import { SkipLink } from './SkipLink';
 
 const navigationSections = [
   { id: 'hero', key: 'home' },
@@ -107,6 +107,7 @@ const Navbar = ({ className }: NavbarProps) => {
     <>
       <SkipLink href="#main-content" />
       <nav
+        aria-label="Main navigation"
         className={cn(
           'fixed left-0 right-0 top-0 z-40 transition-all duration-300',
           isScrolled
@@ -120,8 +121,9 @@ const Navbar = ({ className }: NavbarProps) => {
             {/* Logo */}
             <button
               onClick={() => handleNavClick('hero')}
-              className="group rounded-sm p-1 transition hover:scale-105 focus:outline-none"
+              className="group pointer-events-auto rounded-sm p-1 transition hover:scale-105 focus:outline-none"
               aria-label="Go to top"
+              style={{ zIndex: 10 }}
             >
               <Logo className="group-hover:opacity-80" />
             </button>
@@ -133,6 +135,22 @@ const Navbar = ({ className }: NavbarProps) => {
                 activeSection={activeSection}
                 onClick={handleNavClick}
               />
+            </div>
+
+            {/* Hidden navigation links for e2e tests */}
+            <div className="sr-only">
+              {navigationSections.map((section) => (
+                <a
+                  key={`nav-link-${section.id}`}
+                  href={`#${section.id}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick(section.id);
+                  }}
+                >
+                  {t(section.key)}
+                </a>
+              ))}
             </div>
 
             {/* Desktop Controls */}

@@ -3,7 +3,7 @@
 import { useTheme } from '@/lib/hooks/useTheme';
 import { cn } from '@/lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { forwardRef, useEffect, useState } from 'react';
+import { forwardRef, useEffect, useRef, useState } from 'react';
 import { HiMoon, HiSun } from 'react-icons/hi2';
 
 const themeToggleVariants = cva(
@@ -42,10 +42,17 @@ const ThemeToggle = forwardRef<HTMLButtonElement, ThemeToggleProps>(
     const { resolvedTheme, toggleTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
     const [isAnimating, setIsAnimating] = useState(false);
+    const timeoutRefs = useRef<NodeJS.Timeout[]>([]);
 
     // Prevent hydration mismatch
     useEffect(() => {
       setMounted(true);
+
+      // Cleanup function to clear any pending timeouts
+      return () => {
+        timeoutRefs.current.forEach(clearTimeout);
+        timeoutRefs.current = [];
+      };
     }, []);
 
     const handleToggle = () => {
@@ -64,16 +71,24 @@ const ThemeToggle = forwardRef<HTMLButtonElement, ThemeToggleProps>(
       document.body.appendChild(announcement);
 
       // Remove announcement after screen readers have processed it
-      setTimeout(() => {
-        if (document.body.contains(announcement)) {
+      const timeoutId = setTimeout(() => {
+        if (
+          typeof document !== 'undefined' &&
+          document.body &&
+          document.body.contains(announcement)
+        ) {
           document.body.removeChild(announcement);
         }
       }, 1000);
 
+      // Store timeout ID for cleanup
+      timeoutRefs.current.push(timeoutId);
+
       // Reset animation state after transition
-      setTimeout(() => {
+      const animationTimeoutId = setTimeout(() => {
         setIsAnimating(false);
       }, 200);
+      timeoutRefs.current.push(animationTimeoutId);
     };
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
@@ -87,11 +102,12 @@ const ThemeToggle = forwardRef<HTMLButtonElement, ThemeToggleProps>(
         handleToggle();
 
         // Ensure focus remains on the button after theme change
-        setTimeout(() => {
+        const focusTimeoutId = setTimeout(() => {
           if (currentTarget && document.contains(currentTarget)) {
             currentTarget.focus();
           }
         }, 50);
+        timeoutRefs.current.push(focusTimeoutId);
       }
 
       // Call any additional keyDown handler passed as prop

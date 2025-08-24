@@ -48,6 +48,7 @@ export interface SectionHeadingProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof sectionHeadingVariants> {
   title: string;
+  eyebrow?: string;
   description?: string;
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   headingId?: string;
@@ -60,6 +61,7 @@ const SectionHeading = forwardRef<HTMLDivElement, SectionHeadingProps>(
       className,
       align,
       title,
+      eyebrow,
       description,
       as: Comp = 'h2',
       headingId,
@@ -74,6 +76,11 @@ const SectionHeading = forwardRef<HTMLDivElement, SectionHeadingProps>(
         className={cn(sectionHeadingVariants({ align }), className)}
         {...props}
       >
+        {eyebrow && (
+          <p className="text-sm font-medium uppercase tracking-wide text-primary">
+            {eyebrow}
+          </p>
+        )}
         <Comp
           id={headingId}
           className={cn(titleVariants({ align }))}

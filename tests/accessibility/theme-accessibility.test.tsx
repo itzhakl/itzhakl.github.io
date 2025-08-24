@@ -17,6 +17,7 @@ import {
   testHighContrastCompatibility,
   testScreenReaderSupport,
 } from '@/lib/theme-accessibility';
+import React from 'react';
 
 // Extend Jest matchers
 expect.extend(toHaveNoViolations);
@@ -48,6 +49,16 @@ describe('Theme Accessibility', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     localStorageMock.getItem.mockReturnValue(null);
+
+    // Clean up any existing announcement elements from previous tests
+    const existingAnnouncements = document.querySelectorAll(
+      '[aria-live="assertive"]'
+    );
+    existingAnnouncements.forEach((element) => {
+      if (element.parentNode) {
+        element.parentNode.removeChild(element);
+      }
+    });
 
     // Default matchMedia mock
     matchMediaMock.mockImplementation((query) => ({

@@ -135,6 +135,7 @@ export const Contact = () => {
                           focus-visible:ring-offset-background
                         `}
                         aria-label={method.ariaLabel}
+                        data-testid="contact-button"
                       >
                         <div
                           className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 transition-transform group-hover:scale-110"

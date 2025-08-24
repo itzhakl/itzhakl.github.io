@@ -1,7 +1,7 @@
 import { LanguageToggle } from '@/components/navigation/LanguageToggle';
 import { Navbar } from '@/components/navigation/Navbar';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
@@ -45,10 +45,28 @@ vi.mock('next/navigation', () => ({
 }));
 
 describe('Navigation Integration Tests', () => {
+  let originalLocation: Location;
+
   beforeEach(() => {
     vi.clearAllMocks();
+
+    // Store original location
+    originalLocation = window.location;
+
+    // Mock window.location
+    delete (window as Window & { location?: Location }).location;
+    window.location = {
+      ...originalLocation,
+      href: '',
+    } as Location;
+
     // Mock scrollTo for smooth scrolling tests
     Element.prototype.scrollIntoView = vi.fn();
+  });
+
+  afterEach(() => {
+    // Restore original location
+    window.location = originalLocation;
   });
 
   describe('Navbar Component', () => {
@@ -65,11 +83,17 @@ describe('Navigation Integration Tests', () => {
     it('handles smooth scroll navigation', async () => {
       // Mock document.getElementById to return a mock element
       const mockElement = {
-        scrollIntoView: vi.fn(),
         getBoundingClientRect: vi.fn().mockReturnValue({ top: 100 }),
       } as HTMLElement;
 
       vi.spyOn(document, 'getElementById').mockReturnValue(mockElement);
+
+      // Mock window.scrollTo
+      const mockScrollTo = vi.fn();
+      Object.defineProperty(window, 'scrollTo', {
+        value: mockScrollTo,
+        writable: true,
+      });
 
       renderWithTheme(<Navbar />);
 
@@ -78,9 +102,9 @@ describe('Navigation Integration Tests', () => {
       const aboutLink = aboutLinks[0]; // Desktop version
       await userEvent.click(aboutLink);
 
-      expect(mockElement.scrollIntoView).toHaveBeenCalledWith({
+      expect(mockScrollTo).toHaveBeenCalledWith({
+        top: expect.any(Number),
         behavior: 'smooth',
-        block: 'start',
       });
     });
 
@@ -151,8 +175,8 @@ describe('Navigation Integration Tests', () => {
       const toggleButton = screen.getByRole('button');
       await userEvent.click(toggleButton);
 
-      // Should call router.replace with new locale
-      expect(mockReplace).toHaveBeenCalled();
+      // Should update window.location.href with new locale
+      expect(window.location.href).toContain('/he');
     });
 
     it('shows current language state', () => {
@@ -173,9 +197,9 @@ describe('Navigation Integration Tests', () => {
       expect(button).toHaveFocus();
 
       // Test Enter key activation
-      fireEvent.keyDown(button, { key: 'Enter' });
+      await userEvent.keyboard('{Enter}');
       await waitFor(() => {
-        expect(mockReplace).toHaveBeenCalled();
+        expect(window.location.href).toContain('/he');
       });
     });
 
@@ -237,7 +261,7 @@ describe('Navigation Integration Tests', () => {
       await userEvent.click(toggleButton);
 
       // Should maintain scroll position (implementation dependent)
-      expect(mockReplace).toHaveBeenCalled();
+      expect(window.location.href).toContain('/he');
     });
 
     it('updates navigation labels when language changes', () => {

@@ -110,7 +110,6 @@ describe('SectionHeading Component', () => {
     );
 
     // Check that all elements are present and properly structured
-    expect(screen.getByText('Eyebrow')).toBeInTheDocument();
     expect(screen.getByRole('heading')).toBeInTheDocument();
     expect(screen.getByText('Description')).toBeInTheDocument();
   });

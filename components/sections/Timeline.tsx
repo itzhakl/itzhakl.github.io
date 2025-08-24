@@ -106,6 +106,7 @@ export const Timeline = () => {
                         ? 'md:flex-row'
                         : ''
                   }`}
+                  data-testid="timeline-item"
                 >
                   {/* Timeline dot */}
                   <div

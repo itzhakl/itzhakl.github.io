@@ -45,14 +45,7 @@ const SkipLink = ({ href, className }: SkipLinkProps) => {
       <a
         href={href}
         onClick={handleClick}
-        className={cn(
-          'skip-link',
-          'sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50',
-          'rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground',
-          'focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
-          'no-underline transition-all duration-200',
-          className
-        )}
+        className={cn('skip-link', className)}
         aria-label={t('skipToContent')}
       >
         {t('skipToContent')}
