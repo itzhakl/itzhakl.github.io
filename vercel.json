@@ -36,7 +36,7 @@
       ]
     },
     {
-      "source": "/assets/(.*)",
+      "source": "/assets/:all*",
       "headers": [
         {
           "key": "Cache-Control",
@@ -45,7 +45,7 @@
       ]
     },
     {
-      "source": "/(.*\\.(js|css|woff2|woff|ttf|otf))",
+      "source": "/:all*(js|css|woff2|woff|ttf|otf)",
       "headers": [
         {
           "key": "Cache-Control",
