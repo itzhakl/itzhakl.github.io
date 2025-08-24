@@ -1,9 +1,9 @@
-import { forwardRef } from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { forwardRef } from 'react';
 
 const cardVariants = cva(
-  'rounded-lg border bg-card text-card-foreground shadow-sm transition-colors',
+  'rounded-lg border bg-card text-card-foreground shadow-sm',
   {
     variants: {
       padding: {
@@ -12,8 +12,8 @@ const cardVariants = cva(
         lg: 'p-8',
       },
       hover: {
-        true: 'hover:bg-card-hover hover:shadow-md transition-all duration-200',
-        false: '',
+        true: 'hover:bg-card-hover hover:shadow-md transition-colors',
+        false: 'transition-colors',
       },
     },
     defaultVariants: {
@@ -31,7 +31,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
   ({ className, padding, hover, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn(cardVariants({ padding, hover, className }))}
+      className={cn(cardVariants({ padding, hover }), className)}
       {...props}
     />
   )
@@ -105,9 +105,9 @@ CardFooter.displayName = 'CardFooter';
 
 export {
   Card,
-  CardHeader,
-  CardFooter,
-  CardTitle,
-  CardDescription,
   CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
 };

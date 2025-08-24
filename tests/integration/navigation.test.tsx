@@ -1,10 +1,16 @@
 import { LanguageToggle } from '@/components/navigation/LanguageToggle';
 import { Navbar } from '@/components/navigation/Navbar';
+import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
+
+// Helper function to render components with ThemeProvider
+const renderWithTheme = (component: React.ReactElement) => {
+  return render(<ThemeProvider>{component}</ThemeProvider>);
+};
 
 // Mock next-intl with more realistic behavior
 vi.mock('next-intl', () => ({
@@ -47,26 +53,29 @@ describe('Navigation Integration Tests', () => {
 
   describe('Navbar Component', () => {
     it('renders all navigation links', () => {
-      render(<Navbar />);
+      renderWithTheme(<Navbar />);
 
-      expect(screen.getByText('about')).toBeInTheDocument();
-      expect(screen.getByText('stack')).toBeInTheDocument();
-      expect(screen.getByText('projects')).toBeInTheDocument();
-      expect(screen.getByText('experience')).toBeInTheDocument();
-      expect(screen.getByText('contact')).toBeInTheDocument();
+      expect(screen.getAllByText('about')[0]).toBeInTheDocument();
+      expect(screen.getAllByText('stack')[0]).toBeInTheDocument();
+      expect(screen.getAllByText('projects')[0]).toBeInTheDocument();
+      expect(screen.getAllByText('experience')[0]).toBeInTheDocument();
+      expect(screen.getAllByText('contact')[0]).toBeInTheDocument();
     });
 
     it('handles smooth scroll navigation', async () => {
       // Mock document.getElementById to return a mock element
       const mockElement = {
         scrollIntoView: vi.fn(),
-      } as any;
+        getBoundingClientRect: vi.fn().mockReturnValue({ top: 100 }),
+      } as HTMLElement;
 
       vi.spyOn(document, 'getElementById').mockReturnValue(mockElement);
 
-      render(<Navbar />);
+      renderWithTheme(<Navbar />);
 
-      const aboutLink = screen.getByText('about');
+      // Get the desktop navigation button (first one)
+      const aboutLinks = screen.getAllByText('about');
+      const aboutLink = aboutLinks[0]; // Desktop version
       await userEvent.click(aboutLink);
 
       expect(mockElement.scrollIntoView).toHaveBeenCalledWith({
@@ -76,37 +85,40 @@ describe('Navigation Integration Tests', () => {
     });
 
     it('highlights active section', () => {
-      render(<Navbar />);
+      renderWithTheme(<Navbar />);
 
-      // Test that navigation items have proper styling
-      const navItems = screen.getAllByRole('button');
-      expect(navItems.length).toBeGreaterThan(0);
+      // Test that desktop navigation items have proper styling
+      const desktopNavItems = screen.getAllByText('about');
+      expect(desktopNavItems.length).toBeGreaterThan(0);
 
-      navItems.forEach((item) => {
-        expect(item).toHaveClass('transition-colors');
-      });
+      // Check the desktop navigation button (first one)
+      const desktopButton = desktopNavItems[0];
+      expect(desktopButton).toHaveClass('transition-colors');
     });
 
     it('is keyboard accessible', async () => {
-      render(<Navbar />);
+      renderWithTheme(<Navbar />);
 
-      const firstLink = screen.getByText('about');
+      // Get the desktop navigation buttons
+      const aboutLinks = screen.getAllByText('about');
+      const firstLink = aboutLinks[0]; // Desktop version
       firstLink.focus();
       expect(firstLink).toHaveFocus();
 
-      // Test Tab navigation
+      // Test Tab navigation - next button should be timeline
       await userEvent.tab();
-      expect(screen.getByText('stack')).toHaveFocus();
+      const timelineLinks = screen.getAllByText('timeline');
+      expect(timelineLinks[0]).toHaveFocus(); // Desktop version
     });
 
     it('should not have accessibility violations', async () => {
-      const { container } = render(<Navbar />);
+      const { container } = renderWithTheme(<Navbar />);
       const results = await axe(container);
       expect(results).toHaveNoViolations();
     });
 
     it('has proper ARIA labels', () => {
-      render(<Navbar />);
+      renderWithTheme(<Navbar />);
 
       const nav = screen.getByRole('navigation');
       expect(nav).toBeInTheDocument();
@@ -114,7 +126,7 @@ describe('Navigation Integration Tests', () => {
     });
 
     it('handles mobile responsiveness', () => {
-      render(<Navbar />);
+      renderWithTheme(<Navbar />);
 
       // Check for mobile menu button (if implemented)
       const nav = screen.getByRole('navigation');
@@ -176,35 +188,38 @@ describe('Navigation Integration Tests', () => {
 
   describe('Navigation and Language Integration', () => {
     it('maintains navigation state during language switch', async () => {
-      const { rerender } = render(
+      const { rerender } = renderWithTheme(
         <div>
           <Navbar />
           <LanguageToggle />
         </div>
       );
 
-      // Click language toggle
-      const toggleButton = screen.getByRole('button', {
+      // Click language toggle (get the first one - standalone LanguageToggle)
+      const toggleButtons = screen.getAllByRole('button', {
         name: /switchTo/i,
       });
+      const toggleButton = toggleButtons[0];
       await userEvent.click(toggleButton);
 
       // Navigation should still be present
       rerender(
-        <div>
-          <Navbar />
-          <LanguageToggle />
-        </div>
+        <ThemeProvider>
+          <div>
+            <Navbar />
+            <LanguageToggle />
+          </div>
+        </ThemeProvider>
       );
 
-      expect(screen.getByText('About')).toBeInTheDocument();
+      expect(screen.getAllByText('about')[0]).toBeInTheDocument();
       expect(
-        screen.getByRole('button', { name: /switchTo/i })
+        screen.getAllByRole('button', { name: /switchTo/i })[0]
       ).toBeInTheDocument();
     });
 
     it('preserves scroll position during language switch', async () => {
-      render(
+      renderWithTheme(
         <div>
           <Navbar />
           <LanguageToggle />
@@ -214,9 +229,11 @@ describe('Navigation Integration Tests', () => {
       // Mock current scroll position
       Object.defineProperty(window, 'scrollY', { value: 500, writable: true });
 
-      const toggleButton = screen.getByRole('button', {
+      // Get the first language toggle button (standalone LanguageToggle)
+      const toggleButtons = screen.getAllByRole('button', {
         name: /switchTo/i,
       });
+      const toggleButton = toggleButtons[0];
       await userEvent.click(toggleButton);
 
       // Should maintain scroll position (implementation dependent)
@@ -226,16 +243,16 @@ describe('Navigation Integration Tests', () => {
     it('updates navigation labels when language changes', () => {
       // This would test that navigation labels update when locale changes
       // Implementation depends on how translations are handled
-      render(<Navbar />);
+      renderWithTheme(<Navbar />);
 
-      expect(screen.getByText('about')).toBeInTheDocument();
-      expect(screen.getByText('stack')).toBeInTheDocument();
+      expect(screen.getAllByText('about')[0]).toBeInTheDocument();
+      expect(screen.getAllByText('stack')[0]).toBeInTheDocument();
     });
   });
 
   describe('Skip Link Integration', () => {
     it('provides skip to main content functionality', () => {
-      render(
+      renderWithTheme(
         <div>
           <a href="#main" className="skip-link">
             Skip to main content

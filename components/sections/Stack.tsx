@@ -23,13 +23,13 @@ const StackItem = ({ item, locale }: StackItemProps) => {
   const getLevelColor = (level?: string) => {
     switch (level) {
       case 'advanced':
-        return 'bg-green-500/10 text-green-400 border-green-500/20';
+        return 'bg-green-500/10 text-green-600 border-green-500/20 dark:text-green-400 dark:border-green-500/30';
       case 'intermediate':
-        return 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20';
+        return 'bg-yellow-500/10 text-yellow-600 border-yellow-500/20 dark:text-yellow-400 dark:border-yellow-500/30';
       case 'beginner':
-        return 'bg-blue-500/10 text-blue-400 border-blue-500/20';
+        return 'bg-blue-500/10 text-blue-600 border-blue-500/20 dark:text-blue-400 dark:border-blue-500/30';
       default:
-        return 'bg-gray-500/10 text-gray-400 border-gray-500/20';
+        return 'bg-muted text-muted-foreground border-border';
     }
   };
 
@@ -144,7 +144,6 @@ export const Stack = ({ stackData }: StackProps) => {
         <div className={`space-y-12 ${isRTL ? 'text-right' : 'text-left'}`}>
           {/* Section heading */}
           <SectionHeading
-            eyebrow={t('eyebrow')}
             title={t('title')}
             description={t('description')}
             align={isRTL ? 'right' : 'left'}

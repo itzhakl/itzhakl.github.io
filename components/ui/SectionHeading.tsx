@@ -15,22 +15,6 @@ const sectionHeadingVariants = cva('space-y-2', {
   },
 });
 
-const eyebrowVariants = cva(
-  'text-sm font-medium uppercase tracking-wider text-primary',
-  {
-    variants: {
-      align: {
-        left: 'text-left',
-        center: 'text-center',
-        right: 'text-right',
-      },
-    },
-    defaultVariants: {
-      align: 'left',
-    },
-  }
-);
-
 const titleVariants = cva(
   'text-3xl font-bold tracking-tight text-foreground sm:text-4xl',
   {
@@ -63,7 +47,6 @@ const descriptionVariants = cva('text-lg text-muted-foreground max-w-2xl', {
 export interface SectionHeadingProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof sectionHeadingVariants> {
-  eyebrow?: string;
   title: string;
   description?: string;
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
@@ -76,7 +59,6 @@ const SectionHeading = forwardRef<HTMLDivElement, SectionHeadingProps>(
     {
       className,
       align,
-      eyebrow,
       title,
       description,
       as: Comp = 'h2',
@@ -92,14 +74,6 @@ const SectionHeading = forwardRef<HTMLDivElement, SectionHeadingProps>(
         className={cn(sectionHeadingVariants({ align }), className)}
         {...props}
       >
-        {eyebrow && (
-          <p
-            className={cn(eyebrowVariants({ align }))}
-            aria-label="Section category"
-          >
-            {eyebrow}
-          </p>
-        )}
         <Comp
           id={headingId}
           className={cn(titleVariants({ align }))}

@@ -22,7 +22,7 @@ const nextConfig = {
     optimizePackageImports: [
       'zod',
       'framer-motion',
-      'lucide-react',
+      'react-icons',
       'next-intl',
     ],
   },
@@ -158,7 +158,7 @@ const nextConfig = {
           ui: {
             name: 'ui',
             chunks: 'all',
-            test: /[\\/]node_modules[\\/](lucide-react|class-variance-authority|clsx|tailwind-merge)[\\/]/,
+            test: /[\\/]node_modules[\\/](react-icons|class-variance-authority|clsx|tailwind-merge)[\\/]/,
             priority: 25,
             enforce: true,
           },

@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Theme Accessibility Test</title>
+    <style>
+      /* Basic theme styles for testing */
+      :root {
+        --background: 222.2 84% 4.9%;
+        --foreground: 210 40% 98%;
+        --primary: 217.2 91.2% 59.8%;
+        --primary-foreground: 222.2 84% 4.9%;
+        --ring: 217.2 91.2% 59.8%;
+      }
+
+      .light {
+        --background: 0 0% 100%;
+        --foreground: 222.2 84% 4.9%;
+        --primary: 217.2 91.2% 59.8%;
+        --primary-foreground: 0 0% 100%;
+        --ring: 217.2 91.2% 59.8%;
+      }
+
+      body {
+        background: hsl(var(--background));
+        color: hsl(var(--foreground));
+        font-family: system-ui, sans-serif;
+        padding: 2rem;
+        transition:
+          background-color 0.2s ease-in-out,
+          color 0.2s ease-in-out;
+      }
+
+      .theme-toggle {
+        background: hsl(var(--primary));
+        color: hsl(var(--primary-foreground));
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+      }
+
+      .theme-toggle:focus-visible {
+        outline: 2px solid hsl(var(--ring));
+        outline-offset: 2px;
+        box-shadow: 0 0 0 4px hsl(var(--ring) / 0.2);
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      /* High contrast mode support */
+      @media (prefers-contrast: high) {
+        .theme-toggle {
+          border: 2px solid hsl(var(--foreground)) !important;
+        }
+
+        .theme-toggle:focus-visible {
+          outline: 3px solid hsl(var(--foreground)) !important;
+          outline-offset: 3px !important;
+        }
+      }
+
+      /* Reduced motion support */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      .test-section {
+        margin: 2rem 0;
+        padding: 1rem;
+        border: 1px solid hsl(var(--foreground) / 0.2);
+        border-radius: 8px;
+      }
+
+      .test-results {
+        margin-top: 1rem;
+        font-family: monospace;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Theme Accessibility Enhancement Test</h1>
+
+    <div class="test-section">
+      <h2>Theme Toggle with Enhanced Accessibility</h2>
+      <button
+        id="themeToggle"
+        class="theme-toggle"
+        role="switch"
+        aria-checked="true"
+        aria-label="Switch to light mode"
+        title="Switch to light mode"
+      >
+        🌙
+      </button>
+
+      <!-- Enhanced screen reader context -->
+      <span class="sr-only" id="themeContext">
+        Theme toggle button. Current theme: dark mode. Switch to light mode.
+      </span>
+
+      <!-- Live region for announcements -->
+      <div
+        id="liveRegion"
+        aria-live="polite"
+        aria-atomic="true"
+        class="sr-only"
+        role="status"
+        aria-label="Theme change status"
+      ></div>
+    </div>
+
+    <div class="test-section">
+      <h2>Accessibility Test Results</h2>
+      <div id="testResults" class="test-results">
+        <p>Click the theme toggle to test accessibility features:</p>
+        <ul>
+          <li>✓ Screen reader announcements</li>
+          <li>✓ Focus management</li>
+          <li>✓ High contrast mode compatibility</li>
+          <li>✓ Keyboard navigation (Tab, Enter, Space)</li>
+          <li>✓ ARIA attributes and roles</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="test-section">
+      <h2>Instructions for Manual Testing</h2>
+      <ol>
+        <li>
+          <strong>Screen Reader:</strong> Use NVDA, JAWS, or VoiceOver to test
+          announcements
+        </li>
+        <li>
+          <strong>Keyboard:</strong> Use Tab to focus, Enter/Space to activate
+        </li>
+        <li>
+          <strong>High Contrast:</strong> Enable system high contrast mode
+        </li>
+        <li>
+          <strong>Reduced Motion:</strong> Enable "prefers-reduced-motion" in
+          browser settings
+        </li>
+      </ol>
+    </div>
+
+    <script>
+      // Theme management
+      let isDark = true;
+      const themeToggle = document.getElementById('themeToggle');
+      const themeContext = document.getElementById('themeContext');
+      const liveRegion = document.getElementById('liveRegion');
+      const testResults = document.getElementById('testResults');
+
+      function updateTheme() {
+        const root = document.documentElement;
+
+        if (isDark) {
+          root.classList.remove('light');
+          themeToggle.textContent = '🌙';
+          themeToggle.setAttribute('aria-label', 'Switch to light mode');
+          themeToggle.setAttribute('title', 'Switch to light mode');
+          themeToggle.setAttribute('aria-checked', 'true');
+          themeContext.textContent =
+            'Theme toggle button. Current theme: dark mode. Switch to light mode.';
+        } else {
+          root.classList.add('light');
+          themeToggle.textContent = '☀️';
+          themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+          themeToggle.setAttribute('title', 'Switch to dark mode');
+          themeToggle.setAttribute('aria-checked', 'false');
+          themeContext.textContent =
+            'Theme toggle button. Current theme: light mode. Switch to dark mode.';
+        }
+      }
+
+      function announceThemeChange() {
+        const newTheme = isDark ? 'dark' : 'light';
+
+        // Enhanced live region announcement
+        liveRegion.textContent = `Theme changed to ${newTheme} mode. Page appearance updated.`;
+
+        // Create temporary assertive announcement for immediate feedback
+        const announcement = document.createElement('div');
+        announcement.setAttribute('aria-live', 'assertive');
+        announcement.setAttribute('aria-atomic', 'true');
+        announcement.className = 'sr-only';
+        announcement.textContent = `Switched to ${newTheme} mode`;
+        document.body.appendChild(announcement);
+
+        // Remove announcement after screen readers process it
+        setTimeout(() => {
+          if (document.body.contains(announcement)) {
+            document.body.removeChild(announcement);
+          }
+        }, 1000);
+
+        // Clear live region after announcement
+        setTimeout(() => {
+          liveRegion.textContent = '';
+        }, 2000);
+
+        // Log for testing
+        console.log(`🎨 Theme changed to ${newTheme} mode`);
+        logAccessibilityTest(`Theme switched to ${newTheme} mode`);
+      }
+
+      function handleToggle() {
+        isDark = !isDark;
+        updateTheme();
+        announceThemeChange();
+
+        // Ensure focus remains on button
+        setTimeout(() => {
+          if (document.activeElement === themeToggle) {
+            themeToggle.focus();
+          }
+        }, 50);
+      }
+
+      function logAccessibilityTest(message) {
+        const timestamp = new Date().toLocaleTimeString();
+        const logEntry = document.createElement('div');
+        logEntry.textContent = `[${timestamp}] ${message}`;
+        logEntry.style.color = 'hsl(var(--primary))';
+        testResults.appendChild(logEntry);
+      }
+
+      // Event listeners
+      themeToggle.addEventListener('click', handleToggle);
+
+      themeToggle.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          handleToggle();
+          logAccessibilityTest(`Keyboard activation: ${event.key}`);
+        }
+      });
+
+      // Focus management testing
+      themeToggle.addEventListener('focus', () => {
+        logAccessibilityTest('Theme toggle focused');
+      });
+
+      themeToggle.addEventListener('blur', () => {
+        logAccessibilityTest('Theme toggle blurred');
+      });
+
+      // Initialize
+      updateTheme();
+      logAccessibilityTest('Accessibility test initialized');
+
+      // Test high contrast mode detection
+      if (
+        window.matchMedia &&
+        window.matchMedia('(prefers-contrast: high)').matches
+      ) {
+        logAccessibilityTest('High contrast mode detected');
+      }
+
+      // Test reduced motion detection
+      if (
+        window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ) {
+        logAccessibilityTest('Reduced motion preference detected');
+      }
+
+      // Color contrast testing
+      function testColorContrast() {
+        const computedStyle = window.getComputedStyle(document.body);
+        const bgColor = computedStyle.backgroundColor;
+        const textColor = computedStyle.color;
+
+        logAccessibilityTest(`Background: ${bgColor}, Text: ${textColor}`);
+      }
+
+      // Run color contrast test on theme change
+      themeToggle.addEventListener('click', () => {
+        setTimeout(testColorContrast, 100);
+      });
+
+      // Initial color contrast test
+      testColorContrast();
+    </script>
+  </body>
+</html>

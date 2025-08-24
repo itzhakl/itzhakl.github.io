@@ -285,21 +285,6 @@ export const projectCard: Variants = {
   },
 };
 
-export const projectCardHover: Variants = {
-  hover: {
-    y: -8,
-    rotateX: 2,
-    rotateY: 2,
-    scale: 1.02,
-    transition: {
-      ...FAST_TRANSITION,
-      type: 'spring',
-      stiffness: 300,
-      damping: 20,
-    },
-  },
-};
-
 // Experience specific animations - GPU optimized
 export const experienceContainer: Variants = {
   initial: {},

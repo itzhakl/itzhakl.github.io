@@ -1,9 +1,11 @@
+import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { isRtlLocale, locales, type Locale } from '@/lib/i18n';
 import {
   generateMetadata as generateDynamicMetadata,
   generateStructuredData,
   generateDynamicViewport as generateViewportConfig,
 } from '@/lib/metadata';
+import { themeScript } from '@/lib/theme-script';
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
@@ -74,8 +76,11 @@ const LocaleLayout = async ({ children, params }: LocaleLayoutProps) => {
     process.env.NEXT_PUBLIC_BASE_URL || 'https://itzhak-leshinsky.com';
 
   return (
-    <html lang={locale} dir={direction} className="dark">
+    <html lang={locale} dir={direction}>
       <head>
+        {/* Theme initialization script - must run before React hydration */}
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+
         {/* Hreflang attributes for multilingual SEO */}
         <link rel="alternate" hrefLang="en" href={`${baseUrl}/en`} />
         <link rel="alternate" hrefLang="he" href={`${baseUrl}/he`} />
@@ -92,7 +97,9 @@ const LocaleLayout = async ({ children, params }: LocaleLayoutProps) => {
         {/* Favicon and app icons */}
         <link rel="icon" href="/favicon.ico" sizes="16x16 32x32" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/favicon.svg" />
+        <link rel="icon" href="/favicon-32x32.svg" sizes="32x32" />
+        <link rel="icon" href="/favicon-16x16.svg" sizes="16x16" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.svg" />
         <link rel="manifest" href="/manifest.webmanifest" />
 
         {/* Structured Data */}
@@ -118,9 +125,11 @@ const LocaleLayout = async ({ children, params }: LocaleLayoutProps) => {
       <body
         className={`${inter.variable} ${notoSansHebrew.variable} font-sans antialiased`}
       >
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
+        <ThemeProvider>
+          <NextIntlClientProvider messages={messages}>
+            {children}
+          </NextIntlClientProvider>
+        </ThemeProvider>
         <script
           dangerouslySetInnerHTML={{
             __html: `

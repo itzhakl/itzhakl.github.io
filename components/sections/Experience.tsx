@@ -11,8 +11,8 @@ import {
   experienceItem,
 } from '@/lib/motion';
 import { motion } from 'framer-motion';
-import { Calendar, MapPin, Users } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
+import { FaCalendarAlt, FaMapMarkerAlt, FaUsers } from 'react-icons/fa';
 
 interface ExperienceItemProps {
   title: string;
@@ -61,7 +61,7 @@ const ExperienceItem = ({
               isRTL ? 'flex-row-reverse' : ''
             }`}
           >
-            <Calendar className="h-4 w-4" aria-hidden="true" />
+            <FaCalendarAlt className="h-4 w-4" aria-hidden="true" />
             <span>{period}</span>
           </div>
           <div
@@ -69,7 +69,7 @@ const ExperienceItem = ({
               isRTL ? 'flex-row-reverse' : ''
             }`}
           >
-            <MapPin className="h-4 w-4" aria-hidden="true" />
+            <FaMapMarkerAlt className="h-4 w-4" aria-hidden="true" />
             <span>{location}</span>
           </div>
         </div>
@@ -90,7 +90,7 @@ const ExperienceItem = ({
               isRTL ? 'flex-row-reverse' : ''
             }`}
           >
-            <Users className="h-4 w-4 text-primary" aria-hidden="true" />
+            <FaUsers className="h-4 w-4 text-primary" aria-hidden="true" />
             <h4 className="font-semibold text-foreground">
               {isRTL ? 'הישגים מרכזיים' : 'Key Achievements'}
             </h4>
@@ -166,7 +166,6 @@ export const Experience = () => {
         <div className={`space-y-12 ${isRTL ? 'text-right' : 'text-left'}`}>
           {/* Section heading */}
           <SectionHeading
-            eyebrow={t('eyebrow')}
             title={t('title')}
             description={t('description')}
             align={isRTL ? 'right' : 'left'}

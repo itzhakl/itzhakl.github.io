@@ -31,7 +31,7 @@ describe('Card Component', () => {
     const card = container.firstChild as HTMLElement;
 
     expect(card).toHaveClass('hover:bg-card-hover');
-    expect(card).toHaveClass('transition-all');
+    expect(card).toHaveClass('transition-colors');
   });
 
   it('applies different padding sizes', () => {

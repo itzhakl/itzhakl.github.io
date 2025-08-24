@@ -11,9 +11,29 @@ import {
   staggerContainer,
 } from '@/lib/motion';
 import { motion, useInView } from 'framer-motion';
-import { Github, Linkedin, Mail, MessageCircle } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useRef } from 'react';
+import { FaGithub, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
+import { SiGmail } from 'react-icons/si';
+
+const getContactMethodStyles = (
+  variant: 'whatsapp' | 'email' | 'linkedin' | 'github'
+) => {
+  const baseStyles = 'text-white';
+
+  switch (variant) {
+    case 'whatsapp':
+      return `${baseStyles} bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600`;
+    case 'email':
+      return `${baseStyles} bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600`;
+    case 'linkedin':
+      return `${baseStyles} bg-blue-700 hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700`;
+    case 'github':
+      return `${baseStyles} bg-gray-800 hover:bg-gray-900 dark:bg-gray-700 dark:hover:bg-gray-800`;
+    default:
+      return `${baseStyles} bg-primary hover:bg-primary-hover`;
+  }
+};
 
 export const Contact = () => {
   const t = useTranslations('contact');
@@ -23,34 +43,34 @@ export const Contact = () => {
   const contactMethods = [
     {
       id: 'whatsapp',
-      icon: MessageCircle,
+      icon: FaWhatsapp,
       label: t('whatsapp'),
-      href: 'https://wa.me/972123456789', // Replace with actual WhatsApp number
-      color: 'bg-green-500 hover:bg-green-600',
+      href: 'https://wa.me/972535561849',
+      variant: 'whatsapp' as const,
       ariaLabel: t('buttons.whatsapp'),
     },
     {
       id: 'email',
-      icon: Mail,
+      icon: SiGmail,
       label: t('email'),
       href: 'mailto:itzhak.lesh@gmail.com',
-      color: 'bg-blue-500 hover:bg-blue-600',
+      variant: 'email' as const,
       ariaLabel: t('buttons.email'),
     },
     {
       id: 'linkedin',
-      icon: Linkedin,
+      icon: FaLinkedin,
       label: t('linkedin'),
       href: 'https://linkedin.com/in/itzhak-leshinsky',
-      color: 'bg-blue-600 hover:bg-blue-700',
+      variant: 'linkedin' as const,
       ariaLabel: t('buttons.linkedin'),
     },
     {
       id: 'github',
-      icon: Github,
+      icon: FaGithub,
       label: t('github'),
       href: 'https://github.com/itzhakl',
-      color: 'bg-gray-700 hover:bg-gray-800',
+      variant: 'github' as const,
       ariaLabel: t('buttons.github'),
     },
   ];
@@ -72,7 +92,6 @@ export const Contact = () => {
           {/* Section Heading */}
           <motion.div variants={fadeInUp} className="mb-16">
             <SectionHeading
-              eyebrow={t('eyebrow')}
               title={t('title')}
               description={t('description')}
               align="center"
@@ -109,8 +128,8 @@ export const Contact = () => {
                         external
                         variant="ghost"
                         className={`
-                          group h-auto w-full flex-col gap-4 p-6 text-white transition-all duration-300
-                          ${method.color}
+                          group h-auto w-full flex-col gap-4 p-6 transition-all duration-300
+                          ${getContactMethodStyles(method.variant)}
                           hover:shadow-lg hover:shadow-primary/20
                           focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2
                           focus-visible:ring-offset-background
@@ -130,14 +149,6 @@ export const Contact = () => {
                     </motion.div>
                   );
                 })}
-              </motion.div>
-
-              {/* Additional Contact Info */}
-              <motion.div variants={fadeInUp} className="mt-12 text-center">
-                <div className="mx-auto h-px w-24 bg-border" />
-                <p className="mt-6 text-sm text-muted-foreground">
-                  Available for freelance projects and full-time opportunities
-                </p>
               </motion.div>
             </Card>
           </motion.div>

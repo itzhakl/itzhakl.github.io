@@ -16,15 +16,27 @@ export default function manifest(): MetadataRoute.Manifest {
     dir: 'ltr',
     icons: [
       {
+        src: '/favicon.ico',
+        sizes: '16x16 32x32',
+        type: 'image/x-icon',
+        purpose: 'any',
+      },
+      {
         src: '/favicon.svg',
         sizes: 'any',
         type: 'image/svg+xml',
         purpose: 'maskable',
       },
       {
-        src: '/favicon.ico',
-        sizes: '16x16 32x32',
-        type: 'image/x-icon',
+        src: '/android-chrome-192x192.svg',
+        sizes: '192x192',
+        type: 'image/svg+xml',
+        purpose: 'any',
+      },
+      {
+        src: '/android-chrome-512x512.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
         purpose: 'any',
       },
     ],

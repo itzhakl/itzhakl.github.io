@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Theme Compatibility Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              background: 'hsl(var(--background))',
+              foreground: 'hsl(var(--foreground))',
+              primary: {
+                DEFAULT: 'hsl(var(--primary))',
+                foreground: 'hsl(var(--primary-foreground))',
+              },
+              secondary: {
+                DEFAULT: 'hsl(var(--secondary))',
+                foreground: 'hsl(var(--secondary-foreground))',
+              },
+              muted: {
+                DEFAULT: 'hsl(var(--muted))',
+                foreground: 'hsl(var(--muted-foreground))',
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :root {
+        --background: 222.2 84% 4.9%;
+        --foreground: 210 40% 98%;
+        --primary: 217.2 91.2% 59.8%;
+        --primary-foreground: 222.2 84% 4.9%;
+        --secondary: 217.2 32.6% 17.5%;
+        --secondary-foreground: 210 40% 98%;
+        --muted: 220 13% 18%;
+        --muted-foreground: 215 20.2% 65.1%;
+      }
+
+      .light {
+        --background: 0 0% 100%;
+        --foreground: 222.2 84% 4.9%;
+        --primary: 217.2 91.2% 59.8%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 210 40% 96%;
+        --secondary-foreground: 222.2 84% 4.9%;
+        --muted: 210 40% 96%;
+        --muted-foreground: 215.4 16.3% 46.9%;
+      }
+
+      body {
+        background: hsl(var(--background));
+        color: hsl(var(--foreground));
+        transition:
+          background-color 0.2s,
+          color 0.2s;
+      }
+
+      .contact-whatsapp {
+        background: #16a34a;
+      }
+      .light .contact-whatsapp {
+        background: #15803d;
+      }
+
+      .skill-advanced {
+        background: rgba(34, 197, 94, 0.1);
+        color: #16a34a;
+        border-color: rgba(34, 197, 94, 0.2);
+      }
+      .light .skill-advanced {
+        color: #15803d;
+      }
+    </style>
+  </head>
+  <body class="p-8">
+    <div class="mx-auto max-w-4xl space-y-8">
+      <div class="flex items-center justify-between">
+        <h1 class="text-3xl font-bold">Theme Compatibility Test</h1>
+        <button
+          onclick="toggleTheme()"
+          class="rounded-md bg-primary px-4 py-2 text-primary-foreground"
+        >
+          Toggle Theme
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <!-- Contact Method Test -->
+        <div class="rounded-lg bg-secondary p-6">
+          <h2 class="mb-4 text-xl font-semibold">Contact Methods</h2>
+          <div class="space-y-3">
+            <button class="contact-whatsapp w-full rounded-md p-3 text-white">
+              WhatsApp (Theme-aware)
+            </button>
+          </div>
+        </div>
+
+        <!-- Skill Level Test -->
+        <div class="rounded-lg bg-secondary p-6">
+          <h2 class="mb-4 text-xl font-semibold">Skill Levels</h2>
+          <div class="space-y-3">
+            <span
+              class="skill-advanced inline-block rounded-full border px-3 py-1 text-xs"
+            >
+              Advanced (Theme-aware)
+            </span>
+          </div>
+        </div>
+
+        <!-- Gradient Test -->
+        <div class="rounded-lg bg-secondary p-6">
+          <h2 class="mb-4 text-xl font-semibold">Gradient Text</h2>
+          <h3
+            class="bg-gradient-to-r from-primary via-primary to-blue-500 bg-clip-text text-2xl font-bold text-transparent dark:to-blue-400"
+          >
+            Hello World!
+          </h3>
+        </div>
+
+        <!-- General Theme Test -->
+        <div class="rounded-lg bg-secondary p-6">
+          <h2 class="mb-4 text-xl font-semibold">General Elements</h2>
+          <p class="mb-2 text-muted-foreground">This is muted text</p>
+          <button
+            class="rounded-md bg-primary px-4 py-2 text-primary-foreground"
+          >
+            Primary Button
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function toggleTheme() {
+        document.documentElement.classList.toggle('light');
+      }
+    </script>
+  </body>
+</html>

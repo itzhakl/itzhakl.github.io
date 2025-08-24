@@ -1,18 +1,18 @@
 'use client';
 
-import { useTranslations, useLocale } from 'next-intl';
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { Badge } from '@/components/ui/Badge';
+import { Card } from '@/components/ui/Card';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { Card } from '@/components/ui/Card';
-import { Badge } from '@/components/ui/Badge';
 import {
   fadeInUp,
+  timelineConnector,
   timelineContainer,
   timelineItem,
-  timelineConnector,
 } from '@/lib/motion';
+import { motion, useInView } from 'framer-motion';
+import { useLocale, useTranslations } from 'next-intl';
+import { useRef } from 'react';
 
 // Import timeline data
 import timelineData from '@/content/timeline.json';
@@ -36,9 +36,11 @@ interface TimelineItem {
 }
 
 const categoryColors = {
-  civilian: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
-  education: 'bg-green-500/10 text-green-400 border-green-500/20',
-  idf: 'bg-purple-500/10 text-purple-400 border-purple-500/20',
+  civilian:
+    'bg-blue-500/10 text-blue-600 border-blue-500/20 dark:text-blue-400 dark:border-blue-500/30',
+  education:
+    'bg-green-500/10 text-green-600 border-green-500/20 dark:text-green-400 dark:border-green-500/30',
+  idf: 'bg-purple-500/10 text-purple-600 border-purple-500/20 dark:text-purple-400 dark:border-purple-500/30',
 };
 
 const categoryIcons = {
@@ -72,7 +74,6 @@ export const Timeline = () => {
           {/* Section Heading */}
           <motion.div variants={fadeInUp} className="mb-16">
             <SectionHeading
-              eyebrow={t('eyebrow')}
               title={t('title')}
               description={t('description')}
               align="center"

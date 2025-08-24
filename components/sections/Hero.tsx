@@ -12,8 +12,9 @@ import {
 } from '@/lib/motion';
 import { scrollToSection } from '@/lib/utils';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, MessageCircle } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { FaGithub, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
+import { SiGmail } from 'react-icons/si';
 
 export const Hero = () => {
   const t = useTranslations('hero');
@@ -25,25 +26,25 @@ export const Hero = () => {
   const socialLinks = [
     {
       href: 'https://github.com/itzhakl',
-      icon: Github,
+      icon: FaGithub,
       label: t('socialLinks.github'),
       'aria-label': t('socialLinks.github'),
     },
     {
       href: 'https://linkedin.com/in/itzhak-leshinsky',
-      icon: Linkedin,
+      icon: FaLinkedin,
       label: t('socialLinks.linkedin'),
       'aria-label': t('socialLinks.linkedin'),
     },
     {
       href: 'mailto:itzhak.lesh@gmail.com',
-      icon: Mail,
+      icon: SiGmail,
       label: t('socialLinks.email'),
       'aria-label': t('socialLinks.email'),
     },
     {
-      href: 'https://wa.me/972123456789', // Replace with actual WhatsApp number
-      icon: MessageCircle,
+      href: 'https://wa.me/972535561849', // Replace with actual WhatsApp number
+      icon: FaWhatsapp,
       label: t('socialLinks.whatsapp'),
       'aria-label': t('socialLinks.whatsapp'),
     },
@@ -72,7 +73,7 @@ export const Hero = () => {
             role="heading"
             aria-level={1}
           >
-            <span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-primary via-primary to-blue-500 bg-clip-text text-transparent dark:to-blue-400">
               {t('greeting')}
             </span>
           </motion.h1>

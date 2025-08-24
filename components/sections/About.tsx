@@ -39,7 +39,6 @@ export const About = () => {
           {/* Section Heading */}
           <motion.div variants={fadeInUp} className="mb-16">
             <SectionHeading
-              eyebrow={t('eyebrow')}
               title={t('title')}
               description={t('description')}
               align="center"
