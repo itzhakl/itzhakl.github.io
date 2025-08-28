@@ -18,10 +18,68 @@ describe('Button Component', () => {
     expect(screen.getByRole('button')).toHaveClass('bg-primary');
 
     rerender(<Button variant="secondary">Secondary</Button>);
-    expect(screen.getByRole('button')).toHaveClass('bg-secondary');
+    expect(screen.getByRole('button')).toHaveClass('bg-transparent');
+    expect(screen.getByRole('button')).toHaveClass('border-border');
+    expect(screen.getByRole('button')).toHaveClass('text-primary');
 
     rerender(<Button variant="ghost">Ghost</Button>);
     expect(screen.getByRole('button')).toHaveClass('hover:bg-accent');
+  });
+
+  it('primary button has correct design system classes', () => {
+    render(<Button variant="primary">Primary Button</Button>);
+    const button = screen.getByRole('button');
+
+    // Task requirement: bg-primary and text-primary-foreground
+    expect(button).toHaveClass('bg-primary');
+    expect(button).toHaveClass('text-primary-foreground');
+
+    // Task requirement: hover effect with brightness-95
+    expect(button).toHaveClass('hover:brightness-95');
+
+    // Task requirement: focus ring with focus:ring-4 focus:ring-accent/30
+    expect(button).toHaveClass('focus:ring-4');
+    expect(button).toHaveClass('focus:ring-accent/30');
+
+    // Task requirement: smooth transition animations
+    expect(button).toHaveClass('transition-all');
+    expect(button).toHaveClass('duration-200');
+    expect(button).toHaveClass('ease-in-out');
+
+    // Design system requirements: rounded-lg and shadow-sm
+    expect(button).toHaveClass('rounded-lg');
+    expect(button).toHaveClass('shadow-sm');
+  });
+
+  it('secondary button has correct design system classes', () => {
+    render(<Button variant="secondary">Secondary Button</Button>);
+    const button = screen.getByRole('button');
+
+    // Task requirement: outline button with border-border and text-primary
+    expect(button).toHaveClass('bg-transparent');
+    expect(button).toHaveClass('border');
+    expect(button).toHaveClass('border-border');
+    expect(button).toHaveClass('text-primary');
+
+    // Task requirement: hover effect with bg-surface/70
+    expect(button).toHaveClass('hover:bg-surface/70');
+
+    // Task requirement: proper focus indicators for accessibility
+    expect(button).toHaveClass('focus:ring-4');
+    expect(button).toHaveClass('focus:ring-accent/30');
+
+    // Task requirement: consistent sizing with primary button (same base classes)
+    expect(button).toHaveClass('inline-flex');
+    expect(button).toHaveClass('items-center');
+    expect(button).toHaveClass('justify-center');
+    expect(button).toHaveClass('rounded-lg');
+    expect(button).toHaveClass('text-sm');
+    expect(button).toHaveClass('font-medium');
+
+    // Task requirement: smooth transition animations
+    expect(button).toHaveClass('transition-all');
+    expect(button).toHaveClass('duration-200');
+    expect(button).toHaveClass('ease-in-out');
   });
 
   it('renders different sizes correctly', () => {

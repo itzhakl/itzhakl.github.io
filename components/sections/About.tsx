@@ -106,7 +106,7 @@ export const About = () => {
             <div className="grid gap-6 md:grid-cols-3">
               <Card className="p-6 text-center">
                 <div className="mb-4">
-                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                  <div className="bg-primary/10 mx-auto flex h-12 w-12 items-center justify-center rounded-full">
                     <span className="text-2xl font-bold text-primary">🚀</span>
                   </div>
                 </div>
@@ -120,7 +120,7 @@ export const About = () => {
 
               <Card className="p-6 text-center">
                 <div className="mb-4">
-                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                  <div className="bg-primary/10 mx-auto flex h-12 w-12 items-center justify-center rounded-full">
                     <span className="text-2xl font-bold text-primary">🗺️</span>
                   </div>
                 </div>
@@ -134,7 +134,7 @@ export const About = () => {
 
               <Card className="p-6 text-center">
                 <div className="mb-4">
-                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                  <div className="bg-primary/10 mx-auto flex h-12 w-12 items-center justify-center rounded-full">
                     <span className="text-2xl font-bold text-primary">👥</span>
                   </div>
                 </div>

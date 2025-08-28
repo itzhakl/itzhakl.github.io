@@ -32,25 +32,6 @@
   {
     "year": "2023",
     "title": {
-      "en": "Full-Stack Developer in IDF J6 & Cyber Defense",
-      "he": "מפתח Full-Stack ביחידת J6 והגנת סייבר צה\"ל"
-    },
-    "summary": {
-      "en": "Served as Full-Stack Developer in IDF technology units, developing GIS tools, microservices, and reusable libraries. Led teams, mentored junior developers, and managed Jira/Confluence workflows.",
-      "he": "שירתתי כמפתח Full-Stack ביחידות טכנולוגיה של צה\"ל, פיתחתי כלי GIS, מיקרו-שירותים וספריות לשימוש חוזר. הובלתי צוותים, הדרכתי מפתחים זוטרים וניהלתי זרימות עבודה ב-Jira/Confluence."
-    },
-    "tags": [
-      "Full-Stack Development",
-      "GIS",
-      "Team Leadership",
-      "Microservices",
-      "Mentoring"
-    ],
-    "category": "idf"
-  },
-  {
-    "year": "2023",
-    "title": {
       "en": "Full-Stack & DevOps Courses",
       "he": "קורסי Full-Stack ו-DevOps"
     },
@@ -66,6 +47,25 @@
       "Professional Development"
     ],
     "category": "education"
+  },
+  {
+    "year": "2023",
+    "title": {
+      "en": "Full-Stack Developer in IDF J6 & Cyber Defense",
+      "he": "מפתח Full-Stack ביחידת J6 והגנת סייבר צה\"ל"
+    },
+    "summary": {
+      "en": "Served as Full-Stack Developer in IDF technology units, developing GIS tools, microservices, and reusable libraries. Led teams, mentored junior developers, and managed Jira/Confluence workflows.",
+      "he": "שירתתי כמפתח Full-Stack ביחידות טכנולוגיה של צה\"ל, פיתחתי כלי GIS, מיקרו-שירותים וספריות לשימוש חוזר. הובלתי צוותים, הדרכתי מפתחים זוטרים וניהלתי זרימות עבודה ב-Jira/Confluence."
+    },
+    "tags": [
+      "Full-Stack Development",
+      "GIS",
+      "Team Leadership",
+      "Microservices",
+      "Mentoring"
+    ],
+    "category": "idf"
   },
   {
     "year": "2024",

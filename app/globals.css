@@ -2,152 +2,284 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  overflow-y: scroll; /* תמיד שמור מקום ל־scrollbar */
+}
+body.rtl {
+  direction: rtl;
+}
+body.ltr {
+  direction: ltr;
+}
+
 :root {
-  /* Default (dark) theme colors - WCAG AA compliant */
-  --background: 222.2 84% 4.9%; /* #0f172a - Very dark blue */
-  --foreground: 210 40% 98%; /* #f8fafc - Very light blue-gray */
-  --surface: 220 13% 18%; /* #2d3748 - Dark gray-blue */
-  --muted: 220 13% 18%; /* #2d3748 - Dark gray-blue */
-  --muted-foreground: 215 20.2% 65.1%; /* #94a3b8 - Medium gray-blue */
+  /* Blue-Purple Design System for Software Engineers - Light Mode (Default) */
 
-  /* Primary colors - Enhanced contrast */
-  --primary: 217.2 91.2% 59.8%; /* #3b82f6 - Bright blue */
-  --primary-foreground: 222.2 84% 4.9%; /* #0f172a - Very dark blue */
-  --primary-hover: 217.2 91.2% 54.8%; /* #2563eb - Slightly darker blue */
+  /* Google/Gmail red */
+  --color-gmail-red: #c71610;
 
-  /* Secondary colors - WCAG compliant */
-  --secondary: 217.2 32.6% 17.5%; /* #1e293b - Dark blue-gray */
-  --secondary-foreground: 210 40% 98%; /* #f8fafc - Very light blue-gray */
-  --secondary-hover: 217.2 32.6% 22.5%; /* #334155 - Medium dark blue-gray */
+  /* LinkedIn blue */
+  --color-linkedin-blue: #0077b5;
 
-  /* Accent colors */
-  --accent: 217.2 32.6% 17.5%; /* #1e293b - Dark blue-gray */
-  --accent-foreground: 210 40% 98%; /* #f8fafc - Very light blue-gray */
+  /* WhatsApp green */
+  --color-whatsapp-green: #25d366;
 
-  /* Text colors - High contrast */
-  --text: 210 40% 98%; /* #f8fafc - Very light blue-gray */
-  --text-muted: 215 20.2% 65.1%; /* #94a3b8 - Medium gray-blue (4.5:1 contrast) */
+  /* GitHub gray */
+  --color-github-gray: #2b3137;
 
-  /* Border and input */
-  --border: 217.2 32.6% 17.5%; /* #1e293b - Dark blue-gray */
-  --input: 217.2 32.6% 17.5%; /* #1e293b - Dark blue-gray */
-  --ring: 217.2 91.2% 59.8%; /* #3b82f6 - Bright blue */
+  /* Primary colors - Professional blue */
+  --color-primary: #4f46e5; /* Light Primary Blue */
+  --color-primary-foreground: #ffffff; /* White text on primary */
+  --color-primary-hover: #4338ca; /* Darker blue for hover */
 
-  /* Card and interactive elements */
-  --card: 220 13% 18%; /* #2d3748 - Dark gray-blue */
-  --card-foreground: 210 40% 98%; /* #f8fafc - Very light blue-gray */
-  --card-hover: 220 13% 23%; /* #4a5568 - Medium dark gray */
+  /* Secondary colors - Elegant purple */
+  --color-secondary: #7c3aed; /* Light Primary Purple */
+  --color-secondary-foreground: #ffffff; /* White text on secondary */
+  --color-secondary-hover: #6d28d9; /* Darker purple for hover */
 
-  /* Destructive colors - WCAG compliant */
-  --destructive: 0 84.2% 60.2%; /* #ef4444 - Bright red */
-  --destructive-foreground: 210 40% 98%; /* #f8fafc - Very light blue-gray */
+  /* Accent colors - Tech cyan */
+  --color-accent: #06b6d4; /* Cyan Accent - for tech/code elements */
+  --color-accent-foreground: #ffffff; /* White text on accent */
+  --color-accent-hover: #0891b2; /* Darker cyan for hover */
 
-  /* Success colors - WCAG compliant */
-  --success: 142.1 76.2% 36.3%; /* #10b981 - Bright green */
-  --success-foreground: 210 40% 98%; /* #f8fafc - Very light blue-gray */
+  /* Background and surface colors */
+  --color-bg: #f8fafc; /* Light Background - soft white */
+  --color-surface: #ffffff; /* Pure White - cards and components */
+  --color-surface-secondary: #f1f5f9; /* Very light gray for secondary surfaces */
 
-  /* Warning colors - WCAG compliant */
-  --warning: 47.9 95.8% 53.1%; /* #f59e0b - Bright amber */
-  --warning-foreground: 222.2 84% 4.9%; /* #0f172a - Very dark blue */
+  /* Text colors */
+  --color-text: #1e293b; /* Dark Text - primary text on light */
+  --color-text-secondary: #475569; /* Medium Gray Text - secondary text */
+  --color-muted: #64748b; /* Slate Gray - muted text and icons */
+
+  /* Border and utility colors */
+  --color-border: #cbd5e1; /* Light border color */
+  --color-border-secondary: #e2e8f0; /* Even lighter border */
+
+  /* Status colors */
+  --color-success: #10b981; /* Success Green */
+  --color-success-foreground: #ffffff;
+  --color-warning: #f59e0b; /* Warning Orange */
+  --color-warning-foreground: #1e293b;
+  --color-error: #ef4444; /* Error Red */
+  --color-error-foreground: #ffffff;
+
+  /* Enhanced shadows for depth */
+  --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --shadow-md:
+    0 4px 6px -1px rgba(15, 23, 42, 0.1), 0 2px 4px -1px rgba(15, 23, 42, 0.06);
+  --shadow-lg:
+    0 10px 15px -3px rgba(15, 23, 42, 0.1),
+    0 4px 6px -2px rgba(15, 23, 42, 0.05);
+  --shadow-xl:
+    0 20px 25px -5px rgba(15, 23, 42, 0.1),
+    0 10px 10px -5px rgba(15, 23, 42, 0.04);
+
+  /* Interactive states */
+  --color-hover: rgba(79, 70, 229, 0.1); /* Light blue tint for hovers */
+  --color-focus-ring: rgba(79, 70, 229, 0.3); /* Focus ring with opacity */
+  --color-card-hover: #ffffff; /* Pure white for elevated cards */
+
+  /* Professional border radius */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* Interactive states */
+  --color-hover: rgba(79, 70, 229, 0.1); /* Light blue tint for hovers */
+  --color-focus-ring: rgba(79, 70, 229, 0.3); /* Focus ring with opacity */
+  --color-card-hover: #f8fafc; /* Slightly elevated card color */
+
+  /* HSL component variables for Tailwind/shadcn compatibility */
+  --background: 210 40% 98%; /* #f8fafc */
+  --foreground: 222 84% 18%; /* #1e293b */
+  --surface: 0 0% 100%; /* #ffffff */
+  --muted: 210 40% 96%; /* #f1f5f9 */
+  --muted-foreground: 215 16% 47%; /* #64748b */
+  --primary: 243 75% 59%; /* #4f46e5 */
+  --primary-foreground: 0 0% 100%; /* #ffffff */
+  --secondary: 262 83% 58%; /* #7c3aed */
+  --secondary-foreground: 0 0% 100%; /* #ffffff */
+  --accent: 188 94% 43%; /* #06b6d4 */
+  --accent-foreground: 0 0% 100%; /* #ffffff */
+  --border: 214 32% 91%; /* #cbd5e1 */
+  --input: 214 32% 91%; /* #cbd5e1 */
+  --ring: 243 75% 59%; /* #4f46e5 for focus rings */
+  --card: 0 0% 100%; /* #ffffff */
+  --card-foreground: 222 84% 18%; /* #1e293b */
+  --card-hover: 0 0% 100%; /* #ffffff - elevated state */
+  --focus-ring: 243 75% 59% / 0.3; /* #4f46e5 with opacity */
+  --destructive: 0 84% 60%; /* #ef4444 */
+  --destructive-foreground: 0 0% 100%; /* #ffffff */
+  --success: 160 84% 39%; /* #10b981 */
+  --success-foreground: 0 0% 100%; /* #ffffff */
+  --warning: 38 92% 50%; /* #f59e0b */
+  --warning-foreground: 222 84% 18%; /* #1e293b */
 }
 
-.light {
-  /* Light theme colors - WCAG AA compliant */
-  --background: 0 0% 100%; /* #ffffff - Pure white */
-  --foreground: 222.2 84% 4.9%; /* #0f172a - Very dark blue */
-  --surface: 0 0% 98%; /* #fafafa - Very light gray */
-  --muted: 210 40% 96%; /* #f1f5f9 - Light blue-gray */
-  --muted-foreground: 215.4 16.3% 46.9%; /* #64748b - Medium gray (4.5:1 contrast) */
+html.dark {
+  /* Blue-Purple Design System - Dark Mode */
 
-  /* Primary colors - Enhanced contrast */
-  --primary: 217.2 91.2% 59.8%; /* #3b82f6 - Bright blue */
-  --primary-foreground: 0 0% 100%; /* #ffffff - Pure white */
-  --primary-hover: 217.2 91.2% 54.8%; /* #2563eb - Slightly darker blue */
+  /* Primary colors - Vibrant indigo for dark backgrounds */
+  --color-primary: #6366f1; /* Indigo Primary */
+  --color-primary-foreground: #ffffff; /* White text on primary */
+  --color-primary-hover: #4f46e5; /* Lighter indigo for hover */
 
-  /* Secondary colors - WCAG compliant */
-  --secondary: 210 40% 96%; /* #f1f5f9 - Light blue-gray */
-  --secondary-foreground: 222.2 84% 4.9%; /* #0f172a - Very dark blue */
-  --secondary-hover: 210 40% 91%; /* #e2e8f0 - Medium light blue-gray */
+  /* Secondary colors - Rich purple */
+  --color-secondary: #8b5cf6; /* Purple Primary */
+  --color-secondary-foreground: #ffffff; /* White text on secondary */
+  --color-secondary-hover: #7c3aed; /* Deeper purple for hover */
 
-  /* Accent colors */
-  --accent: 210 40% 96%; /* #f1f5f9 - Light blue-gray */
-  --accent-foreground: 222.2 84% 4.9%; /* #0f172a - Very dark blue */
+  /* Accent colors - Bright cyan for tech elements */
+  --color-accent: #06b6d4; /* Cyan Accent - consistent across modes */
+  --color-accent-foreground: #ffffff; /* White text on accent */
+  --color-accent-hover: #0891b2; /* Darker cyan for hover */
 
-  /* Text colors - High contrast */
-  --text: 222.2 84% 4.9%; /* #0f172a - Very dark blue */
-  --text-muted: 215.4 16.3% 46.9%; /* #64748b - Medium gray (4.5:1 contrast) */
+  /* Background and surface colors */
+  --color-bg: #0f172a; /* Dark Navy - deep background */
+  --color-surface: #1e293b; /* Dark Slate - cards and components */
+  --color-surface-secondary: #334155; /* Lighter slate for secondary surfaces */
 
-  /* Border and input */
-  --border: 214.3 31.8% 91.4%; /* #e2e8f0 - Light gray-blue */
-  --input: 214.3 31.8% 91.4%; /* #e2e8f0 - Light gray-blue */
-  --ring: 217.2 91.2% 59.8%; /* #3b82f6 - Bright blue */
+  /* Text colors */
+  --color-text: #e2e8f0; /* Light Text - מעט פחות בהיר */
+  --color-text-secondary: #cbd5e1; /* Medium Gray - נשאר זהה */
+  --color-muted: #94a3b8; /* Muted - קצת יותר בהיר */
 
-  /* Card and interactive elements */
-  --card: 0 0% 100%; /* #ffffff - Pure white */
-  --card-foreground: 222.2 84% 4.9%; /* #0f172a - Very dark blue */
-  --card-hover: 0 0% 96%; /* #f5f5f5 - Very light gray */
+  /* Border and utility colors */
+  --color-border: #475569; /* Slate border */
+  --color-border-secondary: #334155; /* Lighter border option */
 
-  /* Destructive colors - WCAG compliant */
-  --destructive: 0 84.2% 60.2%; /* #ef4444 - Bright red */
-  --destructive-foreground: 0 0% 100%; /* #ffffff - Pure white */
+  /* Status colors - same as light mode for consistency */
+  --color-success: #10b981; /* Success Green */
+  --color-success-foreground: #ffffff;
+  --color-warning: #f59e0b; /* Warning Orange */
+  --color-warning-foreground: #0f172a;
+  --color-error: #ef4444; /* Error Red */
+  --color-error-foreground: #ffffff;
 
-  /* Success colors - WCAG compliant */
-  --success: 142.1 76.2% 36.3%; /* #10b981 - Bright green */
-  --success-foreground: 0 0% 100%; /* #ffffff - Pure white */
+  /* Enhanced shadows with blue tint for premium feel */
+  --shadow-sm: 0 1px 2px 0 rgba(99, 102, 241, 0.1);
+  --shadow-md:
+    0 4px 6px -1px rgba(99, 102, 241, 0.15),
+    0 2px 4px -1px rgba(99, 102, 241, 0.1);
+  --shadow-lg:
+    0 10px 15px -3px rgba(99, 102, 241, 0.2),
+    0 4px 6px -2px rgba(99, 102, 241, 0.1);
+  --shadow-xl:
+    0 20px 25px -5px rgba(99, 102, 241, 0.25),
+    0 10px 10px -5px rgba(99, 102, 241, 0.1);
 
-  /* Warning colors - WCAG compliant */
-  --warning: 47.9 95.8% 53.1%; /* #f59e0b - Bright amber */
-  --warning-foreground: 222.2 84% 4.9%; /* #0f172a - Very dark blue */
+  /* Interactive states for dark mode */
+  --color-hover: rgba(99, 102, 241, 0.15); /* Indigo tint for dark hovers */
+  --color-focus-ring: rgba(
+    99,
+    102,
+    241,
+    0.4
+  ); /* Stronger focus ring for dark */
+  --color-card-hover: #334155; /* Elevated dark card color */
+
+  /* HSL component variables for dark mode */
+  --background: 222 84% 5%; /* #0f172a */
+  --foreground: 210 40% 98%; /* #f1f5f9 */
+  --surface: 215 28% 17%; /* #1e293b */
+  --muted: 215 28% 17%; /* #1e293b */
+  --muted-foreground: 215 20% 65%; /* #a1a1aa - מעט יותר בהיר */
+  --primary: 239 84% 67%; /* #6366f1 */
+  --primary-foreground: 0 0% 100%; /* #ffffff */
+  --secondary: 258 90% 66%; /* #8b5cf6 */
+  --secondary-foreground: 0 0% 100%; /* #ffffff */
+  --accent: 188 94% 43%; /* #06b6d4 */
+  --accent-foreground: 0 0% 100%; /* #ffffff */
+  --border: 217 19% 35%; /* #475569 */
+  --input: 217 19% 35%; /* #475569 */
+  --ring: 239 84% 67%; /* #6366f1 for focus rings */
+  --card: 215 28% 17%; /* #1e293b */
+  --card-foreground: 210 40% 88%; /* #e2e8f0 - מעודכן */
+  --card-hover: 215 25% 22%; /* #334155 - elevated dark state */
+  --focus-ring: 239 84% 67% / 0.4; /* #6366f1 with opacity for dark mode */
+  --destructive: 0 84% 60%; /* #ef4444 */
+  --destructive-foreground: 210 40% 88%; /* #e2e8f0 */
+  --success: 160 84% 39%; /* #10b981 */
+  --success-foreground: 210 40% 88%; /* #e2e8f0 */
+  --warning: 38 92% 50%; /* #f59e0b */
+  --warning-foreground: 222 84% 5%; /* #0f172a */
 }
 
+/* Enhanced border consistency */
 * {
-  border-color: hsl(var(--border));
+  border-color: var(--color-border);
 }
 
+/* Improved body styling with font optimization */
 body {
-  color: hsl(var(--foreground));
-  background: hsl(var(--background));
+  color: var(--color-text);
+  background: var(--color-bg);
   font-feature-settings:
     'rlig' 1,
     'calt' 1;
   transition:
-    color 0.2s ease-in-out,
-    background-color 0.2s ease-in-out;
+    color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Smooth transitions for theme switching */
+/* Professional smooth transitions for theme switching */
 *,
 *::before,
 *::after {
-  transition-property:
-    color, background-color, border-color, box-shadow, fill, stroke;
-  transition-duration: 0.2s;
-  transition-timing-function: ease-in-out;
+  transition:
+    color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    fill 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    stroke 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Respect reduced motion preferences */
+/* Respect accessibility preferences */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
-    transition-duration: 0.01ms !important;
+    transition: none !important;
+    animation: none !important;
   }
 }
 
-/* Hebrew font support */
+/* Enhanced typography support */
 [dir='rtl'] {
-  font-family: var(--font-hebrew), var(--font-inter), system-ui, sans-serif;
+  font-family:
+    var(--font-hebrew),
+    var(--font-inter),
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'Roboto',
+    system-ui,
+    sans-serif;
 }
 
 [dir='ltr'] {
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family:
+    var(--font-inter),
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'Roboto',
+    system-ui,
+    sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-/* Enhanced focus styles for accessibility */
+/* Professional focus styles for better UX */
 *:focus {
   outline: none;
 }
@@ -155,10 +287,10 @@ html {
 *:focus-visible {
   outline: 2px solid hsl(var(--ring));
   outline-offset: 2px;
-  border-radius: 2px;
+  border-radius: var(--radius-sm);
 }
 
-/* High contrast focus for interactive elements */
+/* Enhanced focus for interactive elements */
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
@@ -169,29 +301,37 @@ select:focus-visible,
 [tabindex]:focus-visible {
   outline: 2px solid hsl(var(--ring));
   outline-offset: 2px;
-  box-shadow: 0 0 0 4px hsl(var(--ring) / 0.2);
+  box-shadow:
+    0 0 0 4px hsl(var(--ring) / 0.2),
+    var(--shadow-md);
+  border-radius: var(--radius-sm);
 }
 
-/* Skip link styles */
+/* Professional skip link styles */
 .skip-link {
   position: absolute;
-  top: -40px;
-  left: 6px;
+  top: -48px;
+  left: 8px;
   background: hsl(var(--primary));
   color: hsl(var(--primary-foreground));
-  padding: 8px 16px;
+  padding: 12px 20px;
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: var(--radius-md);
   font-weight: 600;
+  font-size: 0.875rem;
   z-index: 1000;
-  transition: top 0.3s;
+  transition:
+    top 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-lg);
 }
 
 .skip-link:focus {
-  top: 6px;
+  top: 8px;
+  box-shadow: var(--shadow-xl);
 }
 
-/* Screen reader only content */
+/* Screen reader accessibility */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -216,16 +356,18 @@ select:focus-visible,
   white-space: normal;
 }
 
-/* High contrast mode support */
+/* High contrast mode support for accessibility */
 @media (prefers-contrast: high) {
   :root {
-    --border: 0 0% 100%;
-    --ring: 0 0% 100%;
+    --color-border: var(--color-text);
+    --ring: var(--foreground);
+    --color-primary: #0000ff; /* True blue for maximum contrast */
+    --color-secondary: #800080; /* True purple for maximum contrast */
   }
 
-  .light {
-    --border: 0 0% 0%;
-    --ring: 0 0% 0%;
+  html.dark {
+    --color-primary: #00ffff; /* Cyan for dark high contrast */
+    --color-secondary: #ff00ff; /* Magenta for dark high contrast */
   }
 
   button,
@@ -233,10 +375,9 @@ select:focus-visible,
   input,
   textarea,
   select {
-    border: 2px solid hsl(var(--foreground)) !important;
+    border: 2px solid var(--color-text) !important;
   }
 
-  /* Enhanced focus indicators for high contrast */
   button:focus-visible,
   a:focus-visible,
   input:focus-visible,
@@ -245,35 +386,115 @@ select:focus-visible,
   [role='button']:focus-visible,
   [role='link']:focus-visible,
   [tabindex]:focus-visible {
-    outline: 3px solid hsl(var(--foreground)) !important;
+    outline: 3px solid var(--color-text) !important;
     outline-offset: 3px !important;
-    box-shadow: 0 0 0 6px hsl(var(--background)) !important;
-  }
-
-  /* Ensure theme toggle is visible in high contrast */
-  [role='switch'] {
-    border: 3px solid hsl(var(--foreground)) !important;
-    background: hsl(var(--background)) !important;
-  }
-
-  [role='switch']:focus-visible {
-    outline: 3px solid hsl(var(--foreground)) !important;
-    outline-offset: 3px !important;
+    box-shadow: 0 0 0 6px var(--color-bg) !important;
   }
 }
 
-/* Reduced motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+/* Enhanced button and interactive element styles */
+button,
+[role='button'] {
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:hover,
+[role='button']:hover {
+  transform: translateY(-1px);
+}
+
+button:active,
+[role='button']:active {
+  transform: translateY(0);
+}
+
+/* Code block styling for developer content */
+pre,
+code {
+  font-family:
+    'JetBrains Mono', 'Fira Code', 'SF Mono', 'Monaco', 'Inconsolata',
+    'Roboto Mono', 'Courier New', monospace;
+}
+
+pre {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  overflow-x: auto;
+  box-shadow: var(--shadow-sm);
+}
+
+code:not(pre code) {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0.125rem 0.375rem;
+  font-size: 0.875em;
+}
+
+/* Card component enhancements */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+/* Selection styling */
+::selection {
+  background: hsl(var(--primary) / 0.2);
+  color: var(--color-text);
+}
+
+::-moz-selection {
+  background: hsl(var(--primary) / 0.2);
+  color: var(--color-text);
+}
+
+/* Scrollbar styling for WebKit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-muted);
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--color-surface);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.6);
+}
+
+/* Print styles */
+@media print {
+  * {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
   }
 
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  .no-print {
+    display: none !important;
   }
 }

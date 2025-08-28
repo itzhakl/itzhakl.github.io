@@ -1,3 +1,5 @@
+'use client';
+
 import { expect, test } from '@playwright/test';
 import { navigateToSection } from './helpers';
 
@@ -5,9 +7,14 @@ test.describe('Content Tests', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/en');
     await page.waitForLoadState('networkidle');
+    // Wait for main content to be visible
+    await page.waitForSelector('main', { timeout: 30000 });
   });
 
   test('should verify all texts are displayed correctly', async ({ page }) => {
+    // Wait for the page to be fully loaded
+    await page.waitForTimeout(1000);
+
     // Hero section texts (use first() to avoid strict mode violations)
     await expect(page.locator('text=Hi there 👋').first()).toBeVisible();
     await expect(page.locator('text=Itzhak Leshinsky').first()).toBeVisible();
@@ -45,7 +52,7 @@ test.describe('Content Tests', () => {
 
     for (const section of sectionsToCheck) {
       await navigateToSection(page, section.id);
-      await page.waitForTimeout(500);
+      await page.waitForTimeout(1000);
 
       for (const text of section.texts) {
         const textElement = page.locator(`text=${text}`).first();
@@ -59,6 +66,9 @@ test.describe('Content Tests', () => {
   test('should verify all images are displayed and not missing', async ({
     page,
   }) => {
+    // Wait for the page to be fully loaded
+    await page.waitForTimeout(1000);
+
     // Wait for all sections to load
     const sections = [
       'about',
@@ -71,8 +81,8 @@ test.describe('Content Tests', () => {
     ];
 
     for (const section of sections) {
-      await page.click(`[href="#${section}"]`);
-      await page.waitForTimeout(500);
+      await navigateToSection(page, section);
+      await page.waitForTimeout(1000);
     }
 
     // Get all images on the page
@@ -83,7 +93,7 @@ test.describe('Content Tests', () => {
       for (let i = 0; i < imageCount; i++) {
         const image = images.nth(i);
 
-        // Check image is visible
+        // Wait for image to load
         await expect(image).toBeVisible();
 
         // Check image has proper alt text
@@ -106,6 +116,9 @@ test.describe('Content Tests', () => {
   });
 
   test('should verify all icons are displayed', async ({ page }) => {
+    // Wait for the page to be fully loaded
+    await page.waitForTimeout(1000);
+
     // Check for React Icons (they render as SVG elements)
     const svgIcons = page.locator(
       'svg[role="img"], svg:not([aria-hidden="true"])'
@@ -131,8 +144,8 @@ test.describe('Content Tests', () => {
     }
 
     // Check specific icons in different sections
-    await page.click('[href="#stack"]');
-    await page.waitForTimeout(500);
+    await navigateToSection(page, 'stack');
+    await page.waitForTimeout(1000);
 
     // Tech stack should have technology icons
     const techIcons = page.locator('[data-testid*="tech-icon"], .tech-icon');
@@ -141,8 +154,8 @@ test.describe('Content Tests', () => {
     }
 
     // Social media icons in hero/contact sections
-    await page.click('[href="#hero"]');
-    await page.waitForTimeout(500);
+    await navigateToSection(page, 'hero');
+    await page.waitForTimeout(1000);
 
     const socialIcons = page.locator('a[href*="github"], a[href*="linkedin"]');
     if ((await socialIcons.count()) > 0) {
@@ -175,8 +188,8 @@ test.describe('Content Tests', () => {
     ];
 
     for (const section of sections) {
-      await page.click(`[href="#${section}"]`);
-      await page.waitForTimeout(500);
+      await navigateToSection(page, section);
+      await page.waitForTimeout(1000);
     }
 
     // Wait for any async operations to complete
@@ -214,6 +227,8 @@ test.describe('Content Tests', () => {
       .first();
     await languageToggle.click();
     await page.waitForURL('/he');
+    await page.waitForLoadState('networkidle');
+    await page.waitForTimeout(1000);
 
     // Test Hebrew content (use first() to avoid strict mode violation)
     await expect(page.locator('text=איציק לשינסקי').first()).toBeVisible();
@@ -222,8 +237,8 @@ test.describe('Content Tests', () => {
     // Navigate through sections in Hebrew
     const hebrewSections = ['about', 'stack', 'projects'];
     for (const section of hebrewSections) {
-      await page.click(`[href="#${section}"]`);
-      await page.waitForTimeout(500);
+      await navigateToSection(page, section);
+      await page.waitForTimeout(1000);
 
       // Verify section content is visible
       const sectionElement = page.locator(`#${section}`);
@@ -243,7 +258,7 @@ test.describe('Content Tests', () => {
     ];
 
     for (const section of dynamicSections) {
-      await page.click(`[href="#${section.id}"]`);
+      await navigateToSection(page, section.id);
 
       // Wait for section to load (it might show loading state first)
       await page.waitForSelector(`#${section.id}`, { timeout: 10000 });
@@ -268,8 +283,8 @@ test.describe('Content Tests', () => {
     const sections = ['hero', 'projects', 'contact'];
 
     for (const section of sections) {
-      await page.click(`[href="#${section}"]`);
-      await page.waitForTimeout(500);
+      await navigateToSection(page, section);
+      await page.waitForTimeout(1000);
     }
 
     // Check external links (GitHub, LinkedIn, project links, etc.)

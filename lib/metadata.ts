@@ -132,7 +132,7 @@ export const generateMetadata = async ({
     archives: [`${baseUrl}/sitemap.xml`],
     bookmarks: [currentUrl],
     other: {
-      'msapplication-TileColor': '#0b0f14',
+      'msapplication-TileColor': 'var(--color-primary)',
       'msapplication-config': '/browserconfig.xml',
       'apple-mobile-web-app-title':
         locale === 'he' ? 'איציק לשינסקי' : 'Itzhak Leshinsky',
@@ -148,8 +148,8 @@ export const generateDynamicViewport = (_locale: Locale): Viewport => {
     viewportFit: 'cover',
     colorScheme: 'dark',
     themeColor: [
-      { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-      { media: '(prefers-color-scheme: dark)', color: '#0b0f14' },
+      { media: '(prefers-color-scheme: light)', color: 'var(--color-bg)' },
+      { media: '(prefers-color-scheme: dark)', color: 'var(--color-bg)' },
     ],
   };
 };

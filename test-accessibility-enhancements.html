@@ -238,7 +238,7 @@
         const timestamp = new Date().toLocaleTimeString();
         const logEntry = document.createElement('div');
         logEntry.textContent = `[${timestamp}] ${message}`;
-        logEntry.style.color = 'hsl(var(--primary))';
+        logEntry.style.color = 'var(--color-primary)';
         testResults.appendChild(logEntry);
       }
 

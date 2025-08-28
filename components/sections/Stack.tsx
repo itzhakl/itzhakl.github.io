@@ -23,11 +23,11 @@ const StackItem = ({ item, locale }: StackItemProps) => {
   const getLevelColor = (level?: string) => {
     switch (level) {
       case 'advanced':
-        return 'bg-green-500/10 text-green-600 border-green-500/20 dark:text-green-400 dark:border-green-500/30';
+        return 'bg-success/10 text-success border-success/20';
       case 'intermediate':
-        return 'bg-yellow-500/10 text-yellow-600 border-yellow-500/20 dark:text-yellow-400 dark:border-yellow-500/30';
+        return 'bg-warning/10 text-warning border-warning/20';
       case 'beginner':
-        return 'bg-blue-500/10 text-blue-600 border-blue-500/20 dark:text-blue-400 dark:border-blue-500/30';
+        return 'bg-primary/10 text-primary border-primary/20';
       default:
         return 'bg-muted text-muted-foreground border-border';
     }
@@ -60,17 +60,17 @@ const StackItem = ({ item, locale }: StackItemProps) => {
       whileTap={{ scale: 0.98 }}
     >
       <div
-        className="relative overflow-hidden rounded-lg border border-border bg-surface/50 p-4 backdrop-blur-sm transition-all duration-300 hover:border-primary/30 hover:bg-surface/70 hover:shadow-lg hover:shadow-primary/5"
+        className="bg-surface/50 hover:border-primary/30 hover:bg-surface/70 hover:shadow-primary/5 relative overflow-hidden rounded-lg border border-border p-4 backdrop-blur-sm transition-all duration-300 hover:shadow-lg"
         role="article"
         aria-label={ariaLabel}
       >
         {/* Hover gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+        <div className="from-primary/5 absolute inset-0 bg-gradient-to-br to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
         <div className="relative z-10 flex flex-col items-center space-y-2 text-center">
           {/* Icon placeholder - could be enhanced with actual icons */}
           <div
-            className="flex h-8 w-8 items-center justify-center rounded-md bg-primary/10 text-primary"
+            className="bg-primary/10 flex h-8 w-8 items-center justify-center rounded-md text-primary"
             aria-hidden="true"
           >
             <span className="text-sm font-semibold">

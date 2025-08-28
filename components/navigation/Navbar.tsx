@@ -65,7 +65,7 @@ const NavControls = ({ mobile = false }: { mobile?: boolean }) => (
   <div
     className={cn(
       'flex items-center space-x-2',
-      mobile && 'mt-3 justify-center border-t border-border/30 pt-3'
+      mobile && 'border-border/30 mt-3 justify-center border-t pt-3'
     )}
   >
     <ThemeToggle
@@ -111,7 +111,7 @@ const Navbar = ({ className }: NavbarProps) => {
         className={cn(
           'fixed left-0 right-0 top-0 z-40 transition-all duration-300',
           isScrolled
-            ? 'border-b border-border/50 bg-background/80 shadow-sm backdrop-blur-md'
+            ? 'bg-background/80 shadow-lg backdrop-blur-lg'
             : 'bg-transparent',
           className
         )}
@@ -159,7 +159,7 @@ const Navbar = ({ className }: NavbarProps) => {
             </div>
 
             {/* Mobile Menu Toggle */}
-            <div className="flex items-center space-x-2 md:hidden">
+            <div className="space-s-2 flex items-center md:hidden">
               <LanguageToggle />
               <ThemeToggle
                 variant="ghost"

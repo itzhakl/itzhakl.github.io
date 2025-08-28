@@ -12,107 +12,124 @@ import {
 } from '@/lib/motion';
 import { motion } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
+import { useMemo } from 'react';
 import { FaCalendarAlt, FaMapMarkerAlt, FaUsers } from 'react-icons/fa';
 
 interface ExperienceItemProps {
-  title: string;
-  organization: string;
-  period: string;
-  location: string;
-  summary: string;
-  achievements: string[];
-  isRTL: boolean;
+  namespace: string;
 }
 
-const ExperienceItem = ({
-  title,
-  organization,
-  period,
-  location,
-  summary,
-  achievements,
-  isRTL,
-}: ExperienceItemProps) => {
+const ExperienceItem = ({ namespace }: ExperienceItemProps) => {
+  const t = useTranslations(namespace);
+  const locale = useLocale();
+  const isRTL = locale === 'he';
+
+  // Get achievements array directly from translations
+  const achievements = useMemo(() => {
+    try {
+      const achievementsArray = t.raw('achievements');
+      if (Array.isArray(achievementsArray)) {
+        return achievementsArray;
+      }
+      return [];
+    } catch {
+      return [];
+    }
+  }, [t]);
+
   return (
     <motion.div
       variants={experienceItem}
-      className="group relative overflow-hidden rounded-xl border border-border bg-surface/50 p-6 backdrop-blur-sm transition-all duration-300 hover:border-primary/30 hover:bg-surface/70 hover:shadow-lg hover:shadow-primary/5"
+      className="bg-surface/50 hover:border-primary/30 hover:bg-surface/70 hover:shadow-primary/5 group relative overflow-hidden rounded-xl border border-border p-4 backdrop-blur-sm transition-all duration-300 hover:shadow-lg sm:p-6"
     >
       {/* Hover gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      <div className="from-primary/5 absolute inset-0 bg-gradient-to-br to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-      <div className="relative z-10 space-y-4">
+      <div className="relative z-10 min-w-0 space-y-3 sm:space-y-4">
         {/* Header */}
-        <div className={`space-y-2 ${isRTL ? 'text-right' : 'text-left'}`}>
-          <h3 className="text-xl font-bold text-foreground transition-colors duration-300 group-hover:text-primary">
-            {title}
+        <div
+          className={`min-w-0 space-y-2 ${isRTL ? 'text-right' : 'text-left'}`}
+        >
+          <h3
+            className={`break-words text-lg font-bold text-foreground transition-colors duration-300 group-hover:text-primary sm:text-xl ${
+              isRTL ? 'hyphens-none' : 'hyphens-auto'
+            }`}
+          >
+            {t('title')}
           </h3>
-          <p className="text-lg font-medium text-primary">{organization}</p>
+          <p
+            className={`break-words text-base font-medium text-primary sm:text-lg ${
+              isRTL ? 'hyphens-none' : 'hyphens-auto'
+            }`}
+          >
+            {t('organization')}
+          </p>
         </div>
 
         {/* Meta information */}
         <div
-          className={`flex flex-wrap gap-4 text-sm text-muted-foreground ${
-            isRTL ? 'flex-row-reverse' : ''
-          }`}
+        // className={`flex flex-col flex-wrap gap-2 text-sm text-muted-foreground sm:flex-row sm:gap-4 ${
+        //   isRTL ? 'items-end sm:justify-end' : ''
+        // }`}
         >
-          <div
-            className={`flex items-center gap-1 ${
-              isRTL ? 'flex-row-reverse' : ''
-            }`}
-          >
-            <FaCalendarAlt className="h-4 w-4" aria-hidden="true" />
-            <span>{period}</span>
+          {/* Div for Period (Date) */}
+          <div className="flex items-center gap-1">
+            <FaCalendarAlt
+              className="h-4 w-4 flex-shrink-0"
+              aria-hidden="true"
+            />
+            <span className="break-words">{t('period')}</span>
           </div>
-          <div
-            className={`flex items-center gap-1 ${
-              isRTL ? 'flex-row-reverse' : ''
-            }`}
-          >
-            <FaMapMarkerAlt className="h-4 w-4" aria-hidden="true" />
-            <span>{location}</span>
+
+          {/* Div for Location */}
+          <div className="flex items-center gap-1">
+            <FaMapMarkerAlt
+              className="h-4 w-4 flex-shrink-0"
+              aria-hidden="true"
+            />
+            <span className="break-words">{t('location')}</span>
           </div>
         </div>
 
         {/* Summary */}
         <p
-          className={`leading-relaxed text-muted-foreground ${
-            isRTL ? 'text-right' : 'text-left'
+          className={`min-w-0 break-words text-sm leading-relaxed text-muted-foreground sm:text-base ${
+            isRTL ? 'hyphens-none text-right' : 'hyphens-auto text-left'
           }`}
         >
-          {summary}
+          {t('summary')}
         </p>
 
         {/* Achievements */}
-        <div className="space-y-3">
-          <div
-            className={`flex items-center gap-2 ${
-              isRTL ? 'flex-row-reverse' : ''
-            }`}
-          >
-            <FaUsers className="h-4 w-4 text-primary" aria-hidden="true" />
-            <h4 className="font-semibold text-foreground">
+        <div className="min-w-0 space-y-3">
+          <div className="flex items-center gap-2">
+            <FaUsers
+              className="h-4 w-4 flex-shrink-0 text-primary"
+              aria-hidden="true"
+            />
+            <h4 className="text-sm font-semibold text-foreground sm:text-base">
               {isRTL ? 'הישגים מרכזיים' : 'Key Achievements'}
             </h4>
           </div>
+
           <motion.ul
             variants={experienceAchievements}
-            className={`space-y-2 ${isRTL ? 'text-right' : 'text-left'}`}
+            className={`min-w-0 space-y-2 ${isRTL ? 'text-right' : 'text-left'}`}
             role="list"
           >
             {achievements.map((achievement, index) => (
               <motion.li
                 key={index}
                 variants={experienceAchievement}
-                className={`flex items-start gap-3 text-sm text-muted-foreground ${
-                  isRTL ? 'flex-row-reverse' : ''
-                }`}
+                className="flex min-w-0 items-start gap-2 text-sm text-muted-foreground sm:gap-3"
               >
                 <div
                   className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary"
                   aria-hidden="true"
                 />
-                <span className="leading-relaxed">{achievement}</span>
+                <span className="min-w-0 break-words leading-relaxed">
+                  {achievement}
+                </span>
               </motion.li>
             ))}
           </motion.ul>
@@ -125,32 +142,30 @@ const ExperienceItem = ({
 interface ExperienceCategoryProps {
   title: string;
   children: React.ReactNode;
-  isRTL: boolean;
 }
 
-const ExperienceCategory = ({
-  title,
-  children,
-  isRTL,
-}: ExperienceCategoryProps) => {
+const ExperienceCategory = ({ title, children }: ExperienceCategoryProps) => {
+  const locale = useLocale();
+  const isRTL = locale === 'he';
+
   return (
-    <motion.div variants={experienceCategory} className="space-y-6">
+    <motion.div variants={experienceCategory} className="min-w-0 space-y-6">
       {/* Category header */}
       <div
-        className={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}
+        className={`flex min-w-0 items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}
       >
-        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
+        <div className="h-px min-w-0 flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
         <Badge
           variant="outline"
-          className="border-primary/30 bg-primary/5 px-4 py-2 text-sm font-semibold text-primary"
+          className="border-primary/30 bg-primary/5 flex-shrink-0 break-words px-3 py-2 text-sm font-semibold text-primary sm:px-4"
         >
           {title}
         </Badge>
-        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
+        <div className="h-px min-w-0 flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
       </div>
 
       {/* Category content */}
-      <div className="space-y-6">{children}</div>
+      <div className="min-w-0 space-y-6">{children}</div>
     </motion.div>
   );
 };
@@ -161,9 +176,14 @@ export const Experience = () => {
   const isRTL = locale === 'he';
 
   return (
-    <section id="experience" className="bg-muted/30 py-16 md:py-24">
+    <section
+      id="experience"
+      className="overflow-hidden bg-muted/30 py-12 sm:py-16 md:py-24"
+    >
       <Container>
-        <div className={`space-y-12 ${isRTL ? 'text-right' : 'text-left'}`}>
+        <div
+          className={`min-w-0 space-y-8 sm:space-y-12 ${isRTL ? 'text-right' : 'text-left'}`}
+        >
           {/* Section heading */}
           <SectionHeading
             title={t('title')}
@@ -177,66 +197,21 @@ export const Experience = () => {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true, margin: '-100px' }}
-            className="space-y-12"
+            className="min-w-0 space-y-8 sm:space-y-12"
           >
             {/* IDF Tech Unit Experience */}
-            <ExperienceCategory title={t('categories.idf')} isRTL={isRTL}>
-              <ExperienceItem
-                title={t('idf.title')}
-                organization={t('idf.organization')}
-                period={t('idf.period')}
-                location={t('idf.location')}
-                summary={t('idf.summary')}
-                achievements={[
-                  t('idf.achievements.0'),
-                  t('idf.achievements.1'),
-                  t('idf.achievements.2'),
-                  t('idf.achievements.3'),
-                  t('idf.achievements.4'),
-                  t('idf.achievements.5'),
-                  t('idf.achievements.6'),
-                  t('idf.achievements.7'),
-                ]}
-                isRTL={isRTL}
-              />
+            <ExperienceCategory title={t('categories.idf')}>
+              <ExperienceItem namespace="experience.idf" />
             </ExperienceCategory>
 
             {/* Civilian Experience */}
-            <ExperienceCategory title={t('categories.civilian')} isRTL={isRTL}>
-              <div className="space-y-6">
+            <ExperienceCategory title={t('categories.civilian')}>
+              <div className="min-w-0 space-y-6">
                 {/* Freelance Experience */}
-                <ExperienceItem
-                  title={t('civilian.freelance.title')}
-                  organization={t('civilian.freelance.organization')}
-                  period={t('civilian.freelance.period')}
-                  location={t('civilian.freelance.location')}
-                  summary={t('civilian.freelance.summary')}
-                  achievements={[
-                    t('civilian.freelance.achievements.0'),
-                    t('civilian.freelance.achievements.1'),
-                    t('civilian.freelance.achievements.2'),
-                    t('civilian.freelance.achievements.3'),
-                    t('civilian.freelance.achievements.4'),
-                  ]}
-                  isRTL={isRTL}
-                />
+                <ExperienceItem namespace="experience.civilian.freelance" />
 
                 {/* Star Car Rental Experience */}
-                <ExperienceItem
-                  title={t('civilian.starCar.title')}
-                  organization={t('civilian.starCar.organization')}
-                  period={t('civilian.starCar.period')}
-                  location={t('civilian.starCar.location')}
-                  summary={t('civilian.starCar.summary')}
-                  achievements={[
-                    t('civilian.starCar.achievements.0'),
-                    t('civilian.starCar.achievements.1'),
-                    t('civilian.starCar.achievements.2'),
-                    t('civilian.starCar.achievements.3'),
-                    t('civilian.starCar.achievements.4'),
-                  ]}
-                  isRTL={isRTL}
-                />
+                <ExperienceItem namespace="experience.civilian.starCar" />
               </div>
             </ExperienceCategory>
           </motion.div>

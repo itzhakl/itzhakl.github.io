@@ -23,15 +23,15 @@ const getContactMethodStyles = (
 
   switch (variant) {
     case 'whatsapp':
-      return `${baseStyles} bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600`;
+      return `${baseStyles} bg-brand-whatsapp hover:bg-brand-whatsapp/80`;
     case 'email':
-      return `${baseStyles} bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600`;
+      return `${baseStyles} bg-brand-gmail hover:bg-brand-gmail/80`;
     case 'linkedin':
-      return `${baseStyles} bg-blue-700 hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700`;
+      return `${baseStyles} bg-brand-linkedin hover:bg-brand-linkedin/80`;
     case 'github':
-      return `${baseStyles} bg-gray-800 hover:bg-gray-900 dark:bg-gray-700 dark:hover:bg-gray-800`;
+      return `${baseStyles} bg-brand-github hover:bg-brand-github/80`;
     default:
-      return `${baseStyles} bg-primary hover:bg-primary-hover`;
+      return `${baseStyles} bg-brand-gmail hover:bg-brand-gmail/80`;
   }
 };
 
@@ -130,8 +130,8 @@ export const Contact = () => {
                         className={`
                           group h-auto w-full flex-col gap-4 p-6 transition-all duration-300
                           ${getContactMethodStyles(method.variant)}
-                          hover:shadow-lg hover:shadow-primary/20
-                          focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2
+                          hover:shadow-current/20 hover:shadow-lg
+                          focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2
                           focus-visible:ring-offset-background
                         `}
                         aria-label={method.ariaLabel}

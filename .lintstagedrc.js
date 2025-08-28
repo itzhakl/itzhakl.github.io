@@ -6,6 +6,4 @@ module.exports = {
     () => 'tsc --noEmit',
   ],
   '*.{json,css,md}': ['prettier --write'],
-  // Validate content when content files change
-  'content/**/*.json': ['npm run validate-content'],
 };

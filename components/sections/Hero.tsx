@@ -117,17 +117,23 @@ export const Hero = () => {
             role="group"
             aria-label="Social media links"
           >
-            {socialLinks.map((link) => {
+            {socialLinks.map((link, index) => {
               const IconComponent = link.icon;
+              const hoverBgStyles = [
+                'hover:bg-brand-github hover:text-white',
+                'hover:bg-brand-linkedin hover:text-white',
+                'hover:bg-brand-gmail hover:text-white',
+                'hover:bg-brand-whatsapp hover:text-white',
+              ];
+
               return (
                 <IconButton
                   key={link.href}
                   href={link.href}
                   external
-                  variant="ghost"
                   size="lg"
                   aria-label={link['aria-label']}
-                  className="transition-transform hover:scale-110 focus:scale-110"
+                  className={`rounded-full p-3 transition-all duration-300 hover:scale-110 focus:scale-110 ${hoverBgStyles[index]}`}
                   title={link.label}
                 >
                   <IconComponent className="h-6 w-6" aria-hidden="true" />

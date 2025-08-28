@@ -76,8 +76,46 @@ export const runAccessibilityAudit = (): AccessibilityIssue[] => {
     const color = styles.color;
     const backgroundColor = styles.backgroundColor;
 
-    // This is a simplified check - in production, you'd use a proper contrast ratio calculator
-    if (color === backgroundColor) {
+    // Skip elements with transparent or inherit backgrounds
+    if (
+      backgroundColor === 'transparent' ||
+      backgroundColor === 'rgba(0, 0, 0, 0)' ||
+      backgroundColor === 'inherit' ||
+      backgroundColor === 'initial' ||
+      backgroundColor === 'unset'
+    ) {
+      return;
+    }
+
+    // Skip elements with no visible text content
+    const textContent = htmlElement.textContent?.trim();
+    if (!textContent) {
+      return;
+    }
+
+    // Helper function to normalize color values to RGB
+    const normalizeColor = (colorValue: string): string | null => {
+      if (!colorValue || colorValue === 'transparent') return null;
+
+      // Create a temporary element to get computed color
+      const tempElement = document.createElement('div');
+      tempElement.style.color = colorValue;
+      document.body.appendChild(tempElement);
+      const computedColor = window.getComputedStyle(tempElement).color;
+      document.body.removeChild(tempElement);
+
+      return computedColor;
+    };
+
+    const normalizedColor = normalizeColor(color);
+    const normalizedBgColor = normalizeColor(backgroundColor);
+
+    // Only check if both colors are valid and the same
+    if (
+      normalizedColor &&
+      normalizedBgColor &&
+      normalizedColor === normalizedBgColor
+    ) {
       issues.push({
         type: 'error',
         element: htmlElement,

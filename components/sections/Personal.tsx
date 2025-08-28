@@ -48,7 +48,7 @@ export const Personal = () => {
             <motion.div variants={fadeInUp}>
               <Card className="h-full p-8 text-center">
                 <div className="mb-6">
-                  <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
+                  <div className="bg-primary/10 mx-auto flex h-16 w-16 items-center justify-center rounded-full">
                     <span
                       className="text-3xl"
                       role="img"
@@ -82,7 +82,7 @@ export const Personal = () => {
             <motion.div variants={fadeInUp}>
               <Card className="h-full p-8 text-center">
                 <div className="mb-6">
-                  <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
+                  <div className="bg-primary/10 mx-auto flex h-16 w-16 items-center justify-center rounded-full">
                     <span
                       className="text-3xl"
                       role="img"
@@ -116,7 +116,7 @@ export const Personal = () => {
             <motion.div variants={fadeInUp}>
               <Card className="h-full p-8 text-center">
                 <div className="mb-6">
-                  <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
+                  <div className="bg-primary/10 mx-auto flex h-16 w-16 items-center justify-center rounded-full">
                     <span className="text-3xl" role="img" aria-label="Values">
                       {categoryIcons.values}
                     </span>
@@ -152,7 +152,7 @@ export const Personal = () => {
                 <span className="text-4xl text-primary">&rdquo;</span>
               </blockquote>
               <div className="mt-6">
-                <div className="mx-auto h-1 w-12 rounded-full bg-primary/30" />
+                <div className="bg-primary/30 mx-auto h-1 w-12 rounded-full" />
               </div>
             </Card>
           </motion.div>

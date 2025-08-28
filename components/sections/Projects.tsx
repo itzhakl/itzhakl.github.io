@@ -102,7 +102,7 @@ export const Projects = () => {
                 role="listitem"
                 data-testid="project-card"
               >
-                <div className="flex h-full flex-col overflow-hidden rounded-lg border border-border/50 bg-card/50 text-card-foreground shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-card-hover hover:shadow-md group-hover:border-primary/20">
+                <div className="border-border/50 group-hover:border-primary/20 flex h-full flex-col overflow-hidden rounded-lg border bg-card/50 text-card-foreground shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-card-hover hover:shadow-md">
                   {/* Project Image */}
                   <div className="relative h-48 overflow-hidden">
                     <Image

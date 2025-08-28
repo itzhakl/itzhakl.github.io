@@ -62,19 +62,21 @@
       }
 
       .contact-whatsapp {
-        background: #16a34a;
-      }
-      .light .contact-whatsapp {
-        background: #15803d;
+        background: var(--color-success, hsl(var(--success)));
       }
 
       .skill-advanced {
-        background: rgba(34, 197, 94, 0.1);
-        color: #16a34a;
-        border-color: rgba(34, 197, 94, 0.2);
-      }
-      .light .skill-advanced {
-        color: #15803d;
+        background: color-mix(
+          in srgb,
+          var(--color-success, hsl(var(--success))) 10%,
+          transparent
+        );
+        color: var(--color-success, hsl(var(--success)));
+        border-color: color-mix(
+          in srgb,
+          var(--color-success, hsl(var(--success))) 20%,
+          transparent
+        );
       }
     </style>
   </head>
